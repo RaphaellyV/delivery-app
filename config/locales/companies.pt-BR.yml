@@ -1,0 +1,15 @@
+pt-BR:
+  activerecord:
+    models:
+      company: 'Transportadora'
+    attributes:
+      company:
+        brand_name: 'Nome Fantasia'
+        corporate_name: 'Razão Social'
+        domain: 'Domínio'
+        registration_number: 'CNPJ'
+        postal_code: 'CEP'
+        billing_address: 'Endereço'
+        city: 'Cidade'
+        state: 'Estado'
+        

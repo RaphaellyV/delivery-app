@@ -1,7 +1,13 @@
 <h2>Transportadoras Ativas</h2>
 
+  <nav><%=link_to 'Cadastrar Transportadora', new_company_path%></nav>
+
   <%@companies.each do |c|%>
     <div>
-      <h3><%= c.brand_name %> - <%= c.state %></h3>
+      <h3><%= link_to c.brand_name, c%> - <%= c.state %></h3>
     </div>
   <% end %>
+
+  <%if @companies.empty?%>
+    <p>Não existem transportadoras ativas.</p>
+  <%end%>

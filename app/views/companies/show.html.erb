@@ -1,0 +1,32 @@
+<h2><%=@company.brand_name.upcase%></h2>
+
+<section>
+  <h3>DADOS CADASTRAIS:</h3>
+  <dl>
+    <dt><strong>CNPJ: </strong></dt>
+    <dd><%= @company.registration_number %></dd>
+    <dt><strong>RAZÃO SOCIAL: </strong></dt>
+    <dd><%= @company.corporate_name.upcase %></dd>
+</dl>
+</section>
+
+<section>
+  <h3>LOCALIZAÇÃO:</h3>
+  <dl>
+    <dt><strong>ENDEREÇO: </strong></dt>
+    <dd><%= @company.billing_address.upcase %></dd>
+    <dt><strong>CIDADE | ESTADO: </strong></dt>
+    <dd><%= @company.city.upcase %> | <%= @company.state %></dd>
+    <dt><strong>CEP: </strong></dt>
+    <dd><%= @company.postal_code %></dd>
+</dl>
+</section>
+
+<section>
+  <h3>DOMÍNIO:</h3>
+  <p><%= @company.domain%></p>
+</section>
+
+<div>
+  <%=link_to('Voltar', companies_path)%>
+</div>
