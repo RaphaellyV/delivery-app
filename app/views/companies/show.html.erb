@@ -1,7 +1,7 @@
 <h2><%=@company.brand_name.upcase%></h2>
 
 <section>
-  <h3>DADOS CADASTRAIS:</h3>
+  <h3>DADOS CADASTRAIS</h3>
   <dl>
     <dt><strong>CNPJ: </strong></dt>
     <dd><%= @company.registration_number %></dd>
@@ -11,7 +11,7 @@
 </section>
 
 <section>
-  <h3>LOCALIZAÇÃO:</h3>
+  <h3>LOCALIZAÇÃO</h3>
   <dl>
     <dt><strong>ENDEREÇO: </strong></dt>
     <dd><%= @company.billing_address.upcase %></dd>
@@ -23,9 +23,13 @@
 </section>
 
 <section>
-  <h3>DOMÍNIO:</h3>
+  <h3>DOMÍNIO</h3>
   <p><%= @company.domain%></p>
 </section>
+
+<div>
+  <%=link_to('Editar', edit_company_path(@company))%>
+</div>
 
 <div>
   <%=link_to('Voltar', companies_path)%>

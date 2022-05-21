@@ -13,14 +13,14 @@ describe 'Admin vê detalhes da transportadora' do
 
     #Assert
     expect(page).to have_content 'OLIST PAX'
-    expect(page).to have_content 'DADOS CADASTRAIS:'
+    expect(page).to have_content 'DADOS CADASTRAIS'
     expect(page).to have_content 'CNPJ: 30.320.042/0001-70'
     expect(page).to have_content 'RAZÃO SOCIAL: PAX TECNOLOGIA EIRELI (“PAX”)'
-    expect(page).to have_content 'LOCALIZAÇÃO:'
+    expect(page).to have_content 'LOCALIZAÇÃO'
     expect(page).to have_content 'ENDEREÇO: AVENIDA TAMBORÉ, 1180'
     expect(page).to have_content 'CIDADE | ESTADO: BARUERI | SP'
     expect(page).to have_content 'CEP: 06460-000'
-    expect(page).to have_content 'DOMÍNIO:'
+    expect(page).to have_content 'DOMÍNIO'
     expect(page).to have_content '@olistpax.com.br'
   end
 

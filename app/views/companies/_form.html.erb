@@ -1,0 +1,36 @@
+<%=form_with(model: @company) do |c|%>
+  <div>
+    <%= c.label :brand_name %>
+    <%= c.text_field :brand_name %>
+  </div>
+  <div>
+    <%= c.label :registration_number %>
+    <%= c.text_field :registration_number %>
+  </div>
+  <div>
+    <%= c.label :corporate_name %>
+    <%= c.text_field :corporate_name %>
+  </div>
+  <div>
+    <%= c.label :postal_code %>
+    <%= c.text_field :postal_code %>
+  <div>
+  <div>
+    <%= c.label :state %>
+    <%= c.text_field :state %>
+  </div>
+  <div>
+    <%= c.label :city %>
+    <%= c.text_field :city %>
+  </div>
+  <div>
+    <%= c.label :billing_address %>
+    <%= c.text_field :billing_address %>
+  <div>
+    <%= c.label :domain %>
+    <%= c.text_field :domain %>
+  </div>
+  <div>
+    <%= c.submit 'Enviar' %>
+  </div>
+<%end%>

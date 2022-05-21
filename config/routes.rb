@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
   root to: 'home#index'
-  resources :companies, only: [:index, :show, :new, :create]
+  resources :companies, only: [:index, :show, :new, :create, :edit, :update]
 end
