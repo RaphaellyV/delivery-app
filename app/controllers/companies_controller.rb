@@ -13,7 +13,7 @@ class CompaniesController < ApplicationController
 
   def create
     company_params
-    @company=Company.new(company_params)
+    @company = Company.new(company_params)
 
     if @company.save()
       redirect_to @company, notice:'Transportadora cadastrada com sucesso.'

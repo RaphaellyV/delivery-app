@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_21_050913) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_22_141717) do
   create_table "companies", force: :cascade do |t|
     t.string "brand_name"
     t.string "corporate_name"
@@ -20,6 +20,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_21_050913) do
     t.string "billing_address"
     t.string "city"
     t.string "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "vehicles", force: :cascade do |t|
+    t.string "license_plate"
+    t.string "v_brand"
+    t.string "v_model"
+    t.integer "v_year"
+    t.integer "max_load"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

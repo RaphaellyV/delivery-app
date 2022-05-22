@@ -1,0 +1,33 @@
+<h2>Veículos Ativos</h2>
+
+<nav><%= link_to 'Cadastrar Veículo', new_vehicle_path %></nav>
+
+<% if @vehicles.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Ano</th>
+        <th>Carga Máxima</th>
+        <th>Placa</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= @vehicles.each do |v| %>
+        <tr>
+          <td><%= v.v_brand %></td>
+          <td><%= v.v_model %></td>
+          <td><%= v.v_year %></td>
+          <td><%= v.max_load %> kg</td>
+          <td><%=link_to(v.license_plate, edit_vehicle_path(v))%></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>Não existem veículos ativos.</p>
+<% end %>
+  
+
+

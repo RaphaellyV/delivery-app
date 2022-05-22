@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Usuário edita uma transportadora' do
+describe 'Administrador edita uma transportadora' do
   it 'a partir da página de detalhes' do
     #Arrange
     company = Company.create!(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 

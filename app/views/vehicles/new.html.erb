@@ -1,0 +1,12 @@
+<h2>Novo Veículo</h2>
+
+<%if (@vehicle.errors.any?)%> 
+    <p>Verifique os erros abaixo:</p>
+    <ul>
+        <%@vehicle.errors.full_messages.each do |msg|%>
+            <li><%=msg%>.</li>
+        <%end%>
+    </ul>
+<%end%>
+
+<%= render 'form'%>
