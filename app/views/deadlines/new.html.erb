@@ -1,9 +1,9 @@
-<h2>Nova Transportadora</h2>
+<h2>Novo Prazo</h2>
 
-<% if (@company.errors.any?) %> 
+<% if (@deadline.errors.any?) %> 
     <p>Verifique os erros abaixo:</p>
     <ul>
-        <%@company.errors.full_messages.each do |msg| %>
+        <% @deadline.errors.full_messages.each do |msg| %>
             <li><%= msg %>.</li>
         <% end %>
     </ul>

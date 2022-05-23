@@ -1,0 +1,25 @@
+<%= form_with(model: @price) do |price| %>
+  <div>
+    <%= price.label :min_vol %> 
+    <%= price.number_field :min_vol %> m³
+  </div>
+  <div>
+    <%= price.label :max_vol %> 
+    <%= price.number_field :max_vol %> m³
+  </div>
+  <div>
+    <%= price.label :min_weight %>
+    <%= price.number_field :min_weight %> kg
+  </div>
+  <div>
+    <%= price.label :max_weight %>
+    <%= price.number_field :max_weight %> kg
+  <div>
+  <div>
+    <%= price.label :price_per_km %>
+    R$ <%= price.number_field :price_per_km %>
+  </div>
+  <div>
+    <%= price.submit 'Enviar' %>
+  </div>
+<%end%>

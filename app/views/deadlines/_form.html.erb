@@ -1,0 +1,17 @@
+<%= form_with(model: @deadline) do |d| %>
+  <div>
+    <%= d.label :min_distance %> 
+    <%= d.number_field :min_distance %> km
+  </div>
+  <div>
+    <%= d.label :max_distance %> 
+    <%= d.number_field :max_distance %> km
+  </div>
+  <div>
+    <%= d.label :max_days %>
+    <%= d.number_field :max_days %> dias úteis
+  </div>
+  <div>
+    <%= d.submit 'Enviar' %>
+  </div>
+<%end%>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_22_141717) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_22_224350) do
   create_table "companies", force: :cascade do |t|
     t.string "brand_name"
     t.string "corporate_name"
@@ -24,6 +24,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_22_141717) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "deadlines", force: :cascade do |t|
+    t.integer "min_distance"
+    t.integer "max_distance"
+    t.integer "max_days"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "prices", force: :cascade do |t|
+    t.decimal "min_vol"
+    t.decimal "max_vol"
+    t.decimal "min_weight"
+    t.decimal "max_weight"
+    t.decimal "price_per_km"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "vehicles", force: :cascade do |t|
     t.string "license_plate"
     t.string "v_brand"
@@ -33,5 +51,4 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_22_141717) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
 end
