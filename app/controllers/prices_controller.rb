@@ -20,7 +20,7 @@ class PricesController < ApplicationController
     if @price.save()
       redirect_to prices_path, notice:'Preço cadastrado com sucesso.'
     else
-      flash.now[:notice]='Preço não cadastrado.'
+      flash.now[:alert]='Preço não cadastrado.'
       render 'new'
     end
   end

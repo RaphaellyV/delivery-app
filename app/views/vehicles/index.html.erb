@@ -6,11 +6,11 @@
   <table>
     <thead>
       <tr>
-        <th>Marca</th>
-        <th>Modelo</th>
-        <th>Ano</th>
-        <th>Carga Máxima</th>
-        <th>Placa</th>
+        <th><%= Vehicle.human_attribute_name(:v_brand) %></th>
+        <th><%= Vehicle.human_attribute_name(:v_model) %></th>
+        <th><%= Vehicle.human_attribute_name(:v_year) %></th>
+        <th><%= Vehicle.human_attribute_name(:max_load) %></th>
+        <th><%= Vehicle.human_attribute_name(:license_plate) %></th>
         <th></th>
       </tr>
     </thead>

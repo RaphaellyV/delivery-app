@@ -1,36 +1,36 @@
-<h2><%=@company.brand_name.upcase%></h2>
+<h2><%= @company.brand_name.upcase %></h2>
 
 <section>
   <h3>DADOS CADASTRAIS</h3>
   <dl>
-    <dt><strong>CNPJ: </strong></dt>
+    <dt><strong><%= Company.human_attribute_name(:registration_number).upcase %>: </strong></dt>
     <dd><%= @company.registration_number %></dd>
-    <dt><strong>RAZÃO SOCIAL: </strong></dt>
+    <dt><strong><%= Company.human_attribute_name(:corporate_name).upcase %>: </strong></dt>
     <dd><%= @company.corporate_name.upcase %></dd>
-</dl>
+  </dl>
 </section>
 
 <section>
   <h3>LOCALIZAÇÃO</h3>
   <dl>
-    <dt><strong>ENDEREÇO: </strong></dt>
+    <dt><strong><%= Company.human_attribute_name(:billing_address).upcase %>: </strong></dt>
     <dd><%= @company.billing_address.upcase %></dd>
     <dt><strong>CIDADE | ESTADO: </strong></dt>
     <dd><%= @company.city.upcase %> | <%= @company.state %></dd>
-    <dt><strong>CEP: </strong></dt>
+    <dt><strong><%= Company.human_attribute_name(:postal_code).upcase %>: </strong></dt>
     <dd><%= @company.postal_code %></dd>
-</dl>
+  </dl>
 </section>
 
 <section>
-  <h3>DOMÍNIO</h3>
+  <h3><%= Company.human_attribute_name(:domain).upcase %></h3>
   <p><%= @company.domain%></p>
 </section>
 
 <div>
-  <%=link_to('Editar', edit_company_path(@company))%>
+  <%= link_to('Editar', edit_company_path(@company)) %>
 </div>
 
 <div>
-  <%=link_to('Voltar', companies_path)%>
+  <%= link_to('Voltar', companies_path) %>
 </div>

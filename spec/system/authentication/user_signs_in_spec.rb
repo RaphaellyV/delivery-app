@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'Usuário se autentica' do
   it 'pela transportadora com sucesso' do
     #Arrange
-    User.create!(email: 'joao@transportadora.com', password: 'password')
+    User.create!(name: 'João Almeida', email: 'joao@transportadora.com', password: 'password')
     #Act
     visit root_path
     click_on 'Entrar como Empresa'
@@ -15,11 +15,12 @@ describe 'Usuário se autentica' do
     expect(page).to have_content 'Login efetuado com sucesso.'
     expect(page).not_to have_link 'Entrar como Empresa'
     expect(page).to have_button 'Sair'
-    expect(page).to have_content 'joao@transportadora.com'
+    expect(page).to have_content 'João Almeida - joao@transportadora.com'
     expect(page).to have_link 'Preços'
     expect(page).to have_link 'Prazos'
     expect(page).to have_link 'Veículos'
     expect(page).not_to have_link 'Transportadoras'
+    expect(page).not_to have_link 'Criar Ordem de Serviço'
   end
 
   it 'como adiministrador com sucesso' do
@@ -41,6 +42,7 @@ describe 'Usuário se autentica' do
     expect(page).not_to have_link 'Prazos'
     expect(page).not_to have_link 'Veículos'
     expect(page).to have_link 'Transportadoras'
+    expect(page).to have_link 'Criar Ordem de Serviço'
   end
 
   it 'e faz logout' do

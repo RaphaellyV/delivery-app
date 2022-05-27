@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Company, type: :model do
   describe '#valid?' do
-    context 'presença' do
+    context 'presence' do
       it 'falso quando o nome fantasia não é preenchido' do
         #Arrange
         company = Company.new(brand_name: '', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
@@ -100,7 +100,7 @@ RSpec.describe Company, type: :model do
       end
     end
 
-    context 'único' do
+    context 'uniqueness' do
       it 'falso quando o CNPJ já está em uso' do
         #Arrange
         first_company = Company.create(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
@@ -135,7 +135,7 @@ RSpec.describe Company, type: :model do
     end
   end
 
-  context 'formato' do
+  context 'format' do
     it 'falso quando o CEP tem menos dígitos que o esperado' do
       #Arrange
       company = Company.new(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 

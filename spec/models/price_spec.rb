@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Price, type: :model do
   describe '#valid?' do
-    context 'presença' do
+    context 'presence' do
       it 'falso quando o volume mínimo não é preenchido' do
         #Arrange
         price = Price.new(min_vol: '', max_vol: 10, min_weight: 0.7, max_weight: 15, price_per_km: 5)
@@ -54,7 +54,7 @@ RSpec.describe Price, type: :model do
       end
     end
 
-    context 'único' do
+    context 'uniqueness' do
       it 'falso quando o preço já foi cadastrado' do
         #Arrange
         first_price = Price.create(min_vol: 0.5, max_vol: 10, min_weight: 0.7, max_weight: 15, price_per_km: 5)
@@ -68,7 +68,7 @@ RSpec.describe Price, type: :model do
       end
     end
 
-    context 'menor que' do
+    context 'less than' do
       it 'falso quando o volume máximo é menor que o volume mínimo' do
         #Arrange
         price = Price.create(min_vol: 11, max_vol: 10, min_weight: 0.7, max_weight: 15, price_per_km: 5)      

@@ -1,0 +1,87 @@
+<h1>Criar <%= Order.model_name.human %></h1>
+
+<% if (@order.errors.any?) %> 
+    <p>Verifique os erros abaixo:</p>
+    <ul>
+        <%@order.errors.full_messages.each do |msg| %>
+            <li><%= msg %>.</li>
+        <% end %>
+    </ul>
+<% end %>
+
+<%= form_with(model: @order) do |f|%>
+  <div>
+    <%= f.label :recipient_name %>
+    <%= f.text_field :recipient_name %>
+  </div>
+  <div>
+    <%= f.label :recipient_registration_number %>
+    <%= f.text_field :recipient_registration_number %>
+  </div>
+  <div>
+    <%= f.label :recipient_telephone %>
+    <%= f.text_field :recipient_telephone %>
+  </div>
+  <div>
+    <%= f.label :recipient_email %>
+    <%= f.text_field :recipient_email %>
+  </div>
+  <div>
+    <%= f.label :recipient_address %>
+    <%= f.text_field :recipient_address %>
+  </div>
+  <div>
+    <%= f.label :recipient_postal_code %>
+    <%= f.text_field :recipient_postal_code %>
+  </div>
+  <div>
+    <%= f.label :recipient_city %>
+    <%= f.text_field :recipient_city %>
+  </div>
+  <div>
+    <%= f.label :recipient_state %>
+    <%= f.text_field :recipient_state %>
+  </div>
+  <div>
+    <%= f.label :product_code %>
+    <%= f.text_field :product_code %>
+  </div>
+  <div>
+    <%= f.label :product_length %>
+    <%= f.number_field :product_length %>
+  </div>
+  <div>
+    <%= f.label :product_height %>
+    <%= f.number_field :product_height %>
+  </div>
+  <div>
+    <%= f.label :product_width %>
+    <%= f.number_field :product_width %>
+  </div>
+  <div>
+    <%= f.label :product_weight %>
+    <%= f.number_field :product_weight %>
+  </div>
+  <div>
+    <%= f.label :address %>
+    <%= f.text_field :address %>
+  </div>
+  <div>
+    <%= f.label :postal_code %>
+    <%= f.text_field :postal_code %>
+  </div>
+  <div>
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+  </div>
+  <div>
+    <%= f.label :state %>
+    <%= f.text_field :state %>
+  </div>
+  <div>
+    <%= f.label :company_id %>
+    <%= f.collection_select :company_id, @companies, :id, :full_description %>
+  </div>
+  
+  <%= f.submit 'Gerar Ordem de Serviço' %>
+<% end %>

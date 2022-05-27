@@ -34,7 +34,7 @@ RSpec.describe Deadline, type: :model do
       end
     end
 
-    context 'único' do
+    context 'uniqueness' do
       
       it 'falso quando o prazo já foi cadastrado' do
         #Arrange
@@ -49,7 +49,7 @@ RSpec.describe Deadline, type: :model do
       end
     end
 
-    context 'menor que' do
+    context 'less than' do
       it 'falso quando a distância máxima é menor que a distância mínima' do
         #Arrange
         deadline = Deadline.create(min_distance: 30, max_distance: 20, max_days: 4)      

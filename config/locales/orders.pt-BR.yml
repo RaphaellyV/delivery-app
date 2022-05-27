@@ -1,0 +1,24 @@
+pt-BR:
+  activerecord:
+    models:
+      order: 'Ordem de Serviço'
+    attributes:
+      order:
+        company_id: 'Transportadora Responsável'
+        recipient_name: 'Destinatário'
+        recipient_registration_number: 'CPF'
+        recipient_telephone: 'Telefone'
+        recipient_email: 'E-mail'
+        recipient_address: 'Endereço de Destino'
+        recipient_postal_code: 'CEP de Destino'
+        recipient_city: 'Cidade de Destino'
+        recipient_state: 'Estado de Destino'
+        product_code: 'Código do Produto'
+        product_length: 'Comprimento do Produto'
+        product_height: 'Altura do Produto'
+        product_width: 'Largura do Produto'
+        product_weight: 'Peso do Produto'
+        address: 'Endereço de Coleta'
+        postal_code: 'CEP de Coleta'
+        city: 'Cidade de Coleta'
+        state: 'Estado de Coleta'

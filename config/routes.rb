@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :vehicles, only: [:index, :new, :create, :edit, :update]
   resources :prices, only: [:index, :new, :create, :edit, :update]
   resources :deadlines, only: [:index, :new, :create, :edit, :update]
+  resources :orders, only: [:new, :create, :show]
 end

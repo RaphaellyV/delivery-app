@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_26_113745) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_27_164517) do
   create_table "companies", force: :cascade do |t|
     t.string "brand_name"
     t.string "corporate_name"
@@ -30,6 +30,30 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_113745) do
     t.integer "max_days"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "company_id", null: false
+    t.string "recipient_name"
+    t.string "recipient_registration_number"
+    t.string "recipient_telephone"
+    t.string "recipient_email"
+    t.string "recipient_address"
+    t.string "recipient_postal_code"
+    t.string "recipient_city"
+    t.string "recipient_state"
+    t.string "product_code"
+    t.integer "product_length"
+    t.integer "product_height"
+    t.integer "product_width"
+    t.integer "product_weight"
+    t.string "address"
+    t.string "city"
+    t.string "postal_code"
+    t.string "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_orders_on_company_id"
   end
 
   create_table "prices", force: :cascade do |t|
@@ -66,4 +90,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_26_113745) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "orders", "companies"
 end

@@ -11,21 +11,24 @@
 
   <body>
     <header>
-      <h1>Sistema de Entregas</h1>
+      <%= link_to root_path do%>
+        <h1>Sistema de Entregas</h1>
+      <% end %>
       <nav>
         <% if user_signed_in? %>
-          <%= current_user.email %>
+          <%= current_user.description %>
           <%= button_to 'Sair', destroy_user_session_path, method: :delete %>
             <% if current_user.admin? %>
-              <%= link_to 'Transportadoras', companies_path %>
-              <%= link_to 'Cadastrar Usuário', new_user_registration_path %>
+              <%= link_to 'Transportadoras', companies_path %> |
+              <%= link_to 'Cadastrar Usuário', new_user_registration_path %> |
+              <%= link_to 'Criar Ordem de Serviço', new_order_path %> |
             <% else %>
-              <%= link_to 'Preços', prices_path %>
-              <%= link_to 'Prazos', deadlines_path %>
-              <%= link_to 'Veículos', vehicles_path %>
+              <%= link_to 'Preços', prices_path %> |
+              <%= link_to 'Prazos', deadlines_path %> |
+              <%= link_to 'Veículos', vehicles_path %> |
             <% end %>
         <% else %>
-           <%= link_to 'Entrar como Empresa', new_user_session_path%>
+           <%= link_to 'Entrar como Empresa', new_user_session_path%> |
         <% end %>
       </nav>
     </header>

@@ -5,4 +5,8 @@ class Company < ApplicationRecord
   validates :postal_code, format: {with: /\A\d{2}\.?\d{3}\-?\d{3}\Z/}
   validates :registration_number, format: {with: /\A\d{2}\.?\d{3}\.?\d{3}\/?\d{4}\-?\d{2}\Z/}
   validates :domain, format: {with: /\A@[^@\s]+\z/}
+
+  def full_description
+    "#{brand_name} | #{corporate_name} | #{state}"
+  end
 end

@@ -20,7 +20,7 @@ class DeadlinesController < ApplicationController
     if @deadline.save()
       redirect_to deadlines_path, notice:'Prazo cadastrado com sucesso.'
     else
-      flash.now[:notice]='Prazo não cadastrado.'
+      flash.now[:alert]='Prazo não cadastrado.'
       render 'new'
     end
   end
@@ -32,7 +32,7 @@ class DeadlinesController < ApplicationController
     if @deadline.update(deadline_params)
       redirect_to deadlines_path, notice: 'Prazo atualizado com sucesso.'
     else
-      flash.now[:notice] = 'Não foi possível atualizar o prazo.'
+      flash.now[:alert] = 'Não foi possível atualizar o prazo.'
       render 'edit'
     end                                      
   end

@@ -22,7 +22,7 @@ class CompaniesController < ApplicationController
     if @company.save()
       redirect_to @company, notice:'Transportadora cadastrada com sucesso.'
     else
-      flash.now[:notice]='Transportadora não cadastrada.'
+      flash.now[:alert]='Transportadora não cadastrada.'
       render 'new'
     end
   end

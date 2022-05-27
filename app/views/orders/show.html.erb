@@ -1,0 +1,37 @@
+<h2><%= Order.model_name.human %></h2>
+
+<h3><%= Order.human_attribute_name(:company_id) %>: <%= @order.company.full_description %></h3>
+  
+<section>
+  <h4>DADOS DO DESTINATÁRIO</h4>
+  <dl>
+    <dt><strong><%= Order.human_attribute_name(:recipient_name) %>: </strong></dt>
+    <dd><%= @order.recipient_name %></dd>
+    <dt><strong><%= Order.human_attribute_name(:recipient_registration_number) %>: </strong></dt>
+    <dd><%= @order.recipient_registration_number %></dd>
+    <dt><strong><%= Order.human_attribute_name(:recipient_telephone) %>: </strong></dt>
+    <dd><%= @order.recipient_telephone %></dd>
+    <dt><strong><%= Order.human_attribute_name(:recipient_email) %>: </strong></dt>
+    <dd><%= @order.recipient_email %></dd>
+    <dt><strong><%= Order.human_attribute_name(:recipient_address) %>: </strong></dt>
+    <dd><%= @order.delivery_address %></dd>
+    <dt><strong><%= Order.human_attribute_name(:recipient_postal_code) %>: </strong></dt>
+    <dd><%= @order.recipient_postal_code %></dd>
+  </dl>
+</section>
+
+<section>
+  <h4>DADOS DO PRODUTO</h4>
+  <dl>
+    <dt><strong><%= Order.human_attribute_name(:product_code) %>: </strong></dt>
+    <dd><%= @order.product_code %></dd>
+    <dt><strong>Dimensões do Produto: </strong></dt>
+    <dd><%= @order.dimensions %></dd>
+    <dt><strong><%= Order.human_attribute_name(:product_weight) %>: </strong></dt>
+    <dd><%= @order.product_weight %> g</dd>
+    <dt><strong><%= Order.human_attribute_name(:address) %>: </strong></dt>
+    <dd><%= @order.full_address %></dd>
+    <dt><strong><%= Order.human_attribute_name(:postal_code) %>: </strong></dt>
+    <dd><%= @order.postal_code %></dd>
+  </dl>
+</section>

@@ -54,7 +54,7 @@ RSpec.describe Vehicle, type: :model do
       end
     end
 
-    context 'único' do
+    context 'uniqueness' do
       it 'falso quando a placa já está em uso' do
         #Arrange
         first_vehicle = Vehicle.create(license_plate: 'BEE4R22', v_brand: 'Mercedes-Benz', v_model: 'Accelo 815', v_year:2019, max_load: 8_000)
@@ -68,7 +68,7 @@ RSpec.describe Vehicle, type: :model do
       end
     end
 
-    context 'formato' do
+    context 'format' do
       it 'falso quando a placa tem menos dígitos que o esperado' do
         #Arrange
         vehicle = Vehicle.new(license_plate: 'BE4R22', v_brand: 'Mercedes-Benz', v_model: 'Accelo 815', v_year:2019, max_load: 8_000)
