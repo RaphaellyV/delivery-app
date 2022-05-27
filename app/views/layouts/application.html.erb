@@ -20,7 +20,6 @@
           <%= button_to 'Sair', destroy_user_session_path, method: :delete %>
             <% if current_user.admin? %>
               <%= link_to 'Transportadoras', companies_path %> |
-              <%= link_to 'Cadastrar Usuário', new_user_registration_path %> |
               <%= link_to 'Criar Ordem de Serviço', new_order_path %> |
             <% else %>
               <%= link_to 'Preços', prices_path %> |

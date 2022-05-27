@@ -5,6 +5,11 @@ class Order < ApplicationRecord
             :recipient_email, :recipient_address, :recipient_postal_code, :recipient_city, :recipient_state,
             :product_code, :product_length, :product_height, :product_width, :product_weight, :address, 
             :postal_code, :city, :state, presence: true
+  validates :recipient_registration_number, format: {with: /\A\d{3}\.?\d{3}\.?\d{3}\-?\d{2}\Z/}
+  validates :recipient_telephone, format: {with: /\A\(?\d{2}\)?\d{4,5}\-?\d{4}\Z/}
+  validates :recipient_email, format: {with: /\A[^@\s]+@[^@\s]+\z/}
+  validates :postal_code, format: {with: /\A\d{2}\.?\d{3}\-?\d{3}\Z/}
+  validates :recipient_postal_code, format: {with: /\A\d{2}\.?\d{3}\-?\d{3}\Z/}
 
   def delivery_address
     "#{recipient_address} - #{recipient_city} - #{recipient_state}"
