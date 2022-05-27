@@ -3,8 +3,10 @@ require 'rails_helper'
 describe 'Usuário cadastra um veículo' do
   it 'a partir da lista de veículos' do
     #Arrange
+    user = User.create!(name: 'João', email: 'joao@transportadora.com', password: 'password')
 
     #Act
+    login_as(user)
     visit(vehicles_path)
     click_on('Cadastrar Veículo')
 
@@ -18,8 +20,10 @@ describe 'Usuário cadastra um veículo' do
 
   it 'com sucesso' do
     #Arrange
+    user = User.create!(name: 'João', email: 'joao@transportadora.com', password: 'password')
 
     #Act
+    login_as(user)
     visit(vehicles_path)
     click_on('Cadastrar Veículo')
     fill_in 'Placa', with: 'BEE4R22'
@@ -40,8 +44,10 @@ describe 'Usuário cadastra um veículo' do
 
   it 'com dados incompletos' do
     #Arrange
+    user = User.create!(name: 'João', email: 'joao@transportadora.com', password: 'password')
 
     #Act
+    login_as(user)
     visit(vehicles_path)
     click_on('Cadastrar Veículo')
     fill_in 'Placa', with: ''

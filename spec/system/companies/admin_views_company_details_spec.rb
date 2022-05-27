@@ -3,12 +3,17 @@ require 'rails_helper'
 describe 'Admin vê detalhes da transportadora' do
   it 'a partir da tela inicial' do
     #Arrange
+    user = User.create!(name: 'João', email: 'joao@email.com', password: 'password', admin: true)
     Company.create!(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
                     registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
                     billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
     
     #Act
-    visit(companies_path)
+    login_as(user)
+    visit root_path
+    within ('nav') do 
+      click_on 'Transportadoras'
+    end
     click_on 'Olist Pax'
 
     #Assert
@@ -26,10 +31,12 @@ describe 'Admin vê detalhes da transportadora' do
 
   it 'e retorna à lista de transportadoras' do
     #Arrange
+    user = User.create!(name: 'João', email: 'joao@email.com', password: 'password', admin: true)
     Company.create!(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
                     registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
                     billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
     #Act
+    login_as(user)
     visit(companies_path)
     click_on('Olist Pax')
     click_on('Voltar')

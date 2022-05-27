@@ -183,5 +183,17 @@ RSpec.describe Company, type: :model do
       #Assert
       expect(company.valid?).to eq false
     end
+
+    it 'falso quando o domínio tem o formato incorreto' do
+      #Arrange
+      company = Company.new(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'olistpax.com.br', 
+                            registration_number: '30.320.042/0001-70', postal_code: '26360-000', 
+                            billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
+      
+      #Act
+        
+      #Assert
+      expect(company.valid?).to eq false
+    end
   end
 end

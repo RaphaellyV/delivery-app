@@ -8,14 +8,14 @@
       <tr>
         <th>Distância</th>
         <th>Prazo</th>
-        <th>Editar Campos</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
-      <%= @deadlines.each do |d| %>
+      <% @deadlines.each do |d| %>
         <tr>
-          <td><%= d.min_distance %> a <%= d.max_distance %></td> km
-          <td><%= d.max_days %></td> dias úteis
+          <td><%= d.min_distance %> a <%= d.max_distance %> km</td> 
+          <td><%= d.max_days %> dias úteis</td> 
           <td><%=link_to('Editar', edit_deadline_path(d))%></td>
         </tr>
       <% end %>

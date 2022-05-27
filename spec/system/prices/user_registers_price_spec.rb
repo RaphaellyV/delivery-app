@@ -3,8 +3,10 @@ require 'rails_helper'
 describe 'Usuário cadastra um preço' do
   it 'a partir da lista de preços' do
     #Arrange
+    user = User.create!(name: 'João', email: 'joao@transportadora.com', password: 'password')
 
     #Act
+    login_as(user)
     visit(prices_path)
     click_on('Cadastrar Preço')
 
@@ -18,8 +20,10 @@ describe 'Usuário cadastra um preço' do
 
   it 'com sucesso' do
     #Arrange
+    user = User.create!(name: 'João', email: 'joao@transportadora.com', password: 'password')
 
     #Act
+    login_as(user)
     visit(prices_path)
     click_on('Cadastrar Preço')
     fill_in 'Volume Mínimo', with: '1'
@@ -40,8 +44,10 @@ describe 'Usuário cadastra um preço' do
 
   it 'com dados incompletos' do
     #Arrange
+    user = User.create!(name: 'João', email: 'joao@transportadora.com', password: 'password')
 
     #Act
+    login_as(user)
     visit(prices_path)
     click_on('Cadastrar Preço')
     fill_in 'Volume Mínimo', with: ''

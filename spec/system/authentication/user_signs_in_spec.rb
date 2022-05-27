@@ -1,0 +1,64 @@
+require 'rails_helper'
+
+describe 'Usuário se autentica' do
+  it 'pela transportadora com sucesso' do
+    #Arrange
+    User.create!(email: 'joao@transportadora.com', password: 'password')
+    #Act
+    visit root_path
+    click_on 'Entrar como Empresa'
+    fill_in 'E-mail', with: 'joao@transportadora.com'
+    fill_in 'Senha', with: 'password'
+    click_on 'Entrar'
+    
+    #Assert
+    expect(page).to have_content 'Login efetuado com sucesso.'
+    expect(page).not_to have_link 'Entrar como Empresa'
+    expect(page).to have_button 'Sair'
+    expect(page).to have_content 'joao@transportadora.com'
+    expect(page).to have_link 'Preços'
+    expect(page).to have_link 'Prazos'
+    expect(page).to have_link 'Veículos'
+    expect(page).not_to have_link 'Transportadoras'
+  end
+
+  it 'como adiministrador com sucesso' do
+    #Arrange
+    User.create!(email: 'admin@admin.com', password: '12345678', admin: true)
+    #Act
+    visit root_path
+    click_on 'Entrar como Empresa'
+    fill_in 'E-mail', with: 'admin@admin.com'
+    fill_in 'Senha', with: '12345678'
+    click_on 'Entrar'
+    
+    #Assert
+    expect(page).to have_content 'Login efetuado com sucesso.'
+    expect(page).not_to have_link 'Entrar como Empresa'
+    expect(page).to have_button 'Sair'
+    expect(page).to have_content 'admin@admin.com'
+    expect(page).not_to have_link 'Preços'
+    expect(page).not_to have_link 'Prazos'
+    expect(page).not_to have_link 'Veículos'
+    expect(page).to have_link 'Transportadoras'
+  end
+
+  it 'e faz logout' do
+    #Arrange
+    User.create!(email: 'joao@transportadora.com', password: 'password')
+
+    #Act
+    visit root_path
+    click_on 'Entrar como Empresa'
+    fill_in 'E-mail', with: 'joao@transportadora.com'
+    fill_in 'Senha', with: 'password'
+    click_on 'Entrar'
+    click_on 'Sair'
+
+    #Assert
+    expect(page).to have_content 'Logout efetuado com sucesso.'
+    expect(page).to have_link 'Entrar como Empresa'
+    expect(page).not_to have_button 'Sair'
+    expect(page).not_to have_content 'joao@transportadora.com'
+  end
+end

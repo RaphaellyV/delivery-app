@@ -2,8 +2,21 @@ require 'rails_helper'
 
 describe 'Admin vê transportadoras' do
 
+  it 'se estiver autenticado' do
+    #Arrange
+    user = User.create!(name: 'João', email: 'joao@email.com', password: 'password', admin: true)
+
+    #Act
+    visit companies_path
+
+    #Assert
+    login_as(user)
+    expect(current_path).to eq new_user_session_path
+  end
+
   it 'com sucesso' do
     #Arrange
+    user = User.create!(name: 'João', email: 'joao@email.com', password: 'password', admin: true)
     Company.create!(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
                     registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
                     billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
@@ -13,6 +26,7 @@ describe 'Admin vê transportadoras' do
                     billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
 
     #Act
+    login_as(user)
     visit(companies_path)
 
     #Assert
@@ -24,8 +38,10 @@ describe 'Admin vê transportadoras' do
 
   it 'e não existem transportadoras ativas' do
     #Arrange
+    user = User.create!(name: 'João', email: 'joao@email.com', password: 'password', admin: true)
 
     #Act
+    login_as(user)
     visit companies_path
     
     #Assert

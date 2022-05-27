@@ -3,8 +3,10 @@ require 'rails_helper'
 describe 'Admin cadastra uma transportadora' do
   it 'a partir da lista de transportadoras' do
     #Arrange
+    user = User.create!(name: 'João', email: 'joao@email.com', password: 'password', admin: true)
 
     #Act
+    login_as(user)
     visit(companies_path)
     click_on('Cadastrar Transportadora')
 
@@ -21,8 +23,10 @@ describe 'Admin cadastra uma transportadora' do
 
   it 'com sucesso' do
     #Arrange
+    user = User.create!(name: 'João', email: 'joao@email.com', password: 'password', admin: true)
 
     #Act
+    login_as(user)
     visit(companies_path)
     click_on('Cadastrar Transportadora')
     fill_in 'Nome Fantasia', with: 'Olist Pax'
@@ -51,8 +55,10 @@ describe 'Admin cadastra uma transportadora' do
 
   it 'com dados incompletos' do
     #Arrange
+    user = User.create!(name: 'João', email: 'joao@email.com', password: 'password', admin: true)
 
     #Act
+    login_as(user)
     visit(companies_path)
     click_on('Cadastrar Transportadora')
     fill_in 'Nome Fantasia', with: ''

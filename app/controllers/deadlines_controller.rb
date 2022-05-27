@@ -1,4 +1,8 @@
 class DeadlinesController < ApplicationController
+  before_action :authenticate_user!
+  before_action do 
+    redirect_to new_user_session_path unless current_user
+  end
   before_action :set_deadline, only: [:edit, :update]
 
   def index
@@ -24,11 +28,11 @@ class DeadlinesController < ApplicationController
   def edit; end
 
   def update
-    deadlines_params
-    if @price.update(deadlines_params)
+    deadline_params
+    if @deadline.update(deadline_params)
       redirect_to deadlines_path, notice: 'Prazo atualizado com sucesso.'
     else
-      flash.now[:notice] = 'Não foi possível atualizar o Prazo.'
+      flash.now[:notice] = 'Não foi possível atualizar o prazo.'
       render 'edit'
     end                                      
   end

@@ -1,10 +1,13 @@
 # Sistema de Entregas
 ---------------------
-## Introdução
-Rode os testes usando o comando `rspec`
+## Sobre CSS
+https://stackoverflow.com/questions/1367409/how-to-make-button-look-like-a-link
+
+## Sobre devise
+https://stackoverflow.com/questions/33131223/multiple-users-in-devise
 
 ## Gestão de Transportadoras
-O user admin verá em sua página inicial uma lista com os nomes das transportadoras ativas.
+
 ## Usuários administradores e de transportadoras
 
 ## Cadastro de Veículos
@@ -24,29 +27,5 @@ O user admin verá em sua página inicial uma lista com os nomes das transportad
 
 * Mapa mental feito em https://miro.com/: https://user-images.githubusercontent.com/102007947/168515808-74fa272f-aca7-489c-b74a-e3d97fdb8800.png.
 
-* Gems instaladas: capybara, rspec.
+* Gems instaladas: capybara, rspec, devise
 
-
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

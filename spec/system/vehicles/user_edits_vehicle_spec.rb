@@ -3,11 +3,13 @@ require 'rails_helper'
 describe 'Usuário edita um veículo' do
   it 'a partir da lista de veículos' do
     #Arrange
-    vehicle = Vehicle.create!(license_plate: 'BEE4R22', v_brand: 'Mercedes-Benz', v_model: 'Accelo 815', v_year:2019, max_load: 8_000)
+    user = User.create!(name: 'João', email: 'joao@transportadora.com', password: 'password')
+    Vehicle.create!(license_plate: 'BEE4R22', v_brand: 'Mercedes-Benz', v_model: 'Accelo 815', v_year:2019, max_load: 8_000)
 
     #Act
+    login_as(user)
     visit vehicles_path
-    click_on('BEE4R22')
+    click_on('Editar')
 
     #Assert
     expect(page).to have_content 'Editar Veículo'
@@ -20,11 +22,13 @@ describe 'Usuário edita um veículo' do
 
   it 'com sucesso' do
     #Arrange
-    vehicle = Vehicle.create!(license_plate: 'BEE4R22', v_brand: 'Mercedes-Benz', v_model: 'Accelo 815', v_year:2019, max_load: 8_000)
+    user = User.create!(name: 'João', email: 'joao@transportadora.com', password: 'password')
+    Vehicle.create!(license_plate: 'BEE4R22', v_brand: 'Mercedes-Benz', v_model: 'Accelo 815', v_year:2019, max_load: 8_000)
 
     #Act
+    login_as(user)
     visit(vehicles_path)
-    click_on('BEE4R22')
+    click_on('Editar')
     fill_in 'Placa', with: 'BEE4R23'
     fill_in 'Marca', with: 'Fiat'
     fill_in 'Modelo', with: 'Accelo 817'
@@ -40,11 +44,13 @@ describe 'Usuário edita um veículo' do
 
   it 'e mantém os campos obrigatórios' do
     #Arrange
-    vehicle = Vehicle.create!(license_plate: 'BEE4R22', v_brand: 'Mercedes-Benz', v_model: 'Accelo 815', v_year:2019, max_load: 8_000)
+    user = User.create!(name: 'João', email: 'joao@transportadora.com', password: 'password')
+    Vehicle.create!(license_plate: 'BEE4R22', v_brand: 'Mercedes-Benz', v_model: 'Accelo 815', v_year:2019, max_load: 8_000)
 
     #Act
+    login_as(user)
     visit(vehicles_path)
-    click_on('BEE4R22')
+    click_on('Editar')
     fill_in 'Placa', with: ''
     fill_in 'Marca', with: ''
     fill_in 'Modelo', with: ''

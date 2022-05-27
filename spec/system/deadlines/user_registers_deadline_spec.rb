@@ -3,8 +3,10 @@ require 'rails_helper'
 describe 'Usuário cadastra um prazo' do
   it 'a partir da lista de prazos' do
     #Arrange
+    user = User.create!(name: 'João', email: 'joao@transportadora.com', password: 'password')
 
     #Act
+    login_as(user)
     visit(deadlines_path)
     click_on('Cadastrar Prazo')
 
@@ -16,8 +18,10 @@ describe 'Usuário cadastra um prazo' do
 
   it 'com sucesso' do
     #Arrange
+    user = User.create!(name: 'João', email: 'joao@transportadora.com', password: 'password')
 
     #Act
+    login_as(user)
     visit(deadlines_path)
     click_on('Cadastrar Prazo')
     fill_in 'Distância Mínima', with: '3'
@@ -34,8 +38,10 @@ describe 'Usuário cadastra um prazo' do
 
   it 'com dados incompletos' do
     #Arrange
+    user = User.create!(name: 'João', email: 'joao@transportadora.com', password: 'password')
 
     #Act
+    login_as(user)
     visit(deadlines_path)
     click_on('Cadastrar Prazo')
     fill_in 'Distância Mínima', with: ''

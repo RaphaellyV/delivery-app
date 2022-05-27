@@ -4,11 +4,12 @@ describe 'Usuário vê veículos' do
 
   it 'com sucesso' do
     #Arrange
+    user = User.create!(name: 'João', email: 'joao@transportadora.com', password: 'password')
     Vehicle.create!(license_plate: 'BEE4R22', v_brand: 'Mercedes-Benz', v_model: 'Accelo 815', v_year:2019, max_load: 8_000)
-   
     Vehicle.create!(license_plate: 'HMG0248', v_brand: 'Ford', v_model: 'Cargo 816', v_year:2018, max_load: 7_000)
 
     #Act
+    login_as(user)
     visit(vehicles_path)
 
     #Assert
@@ -32,8 +33,10 @@ describe 'Usuário vê veículos' do
 
   it 'e não existem veículos ativos' do
     #Arrange
+    user = User.create!(name: 'João', email: 'joao@transportadora.com', password: 'password')
 
     #Act
+    login_as(user)
     visit vehicles_path
     
     #Assert

@@ -3,10 +3,12 @@ require 'rails_helper'
 describe 'Administrador edita uma transportadora' do
   it 'a partir da página de detalhes' do
     #Arrange
+    user = User.create!(name: 'João', email: 'joao@email.com', password: 'password', admin: true)
     company = Company.create!(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
                                 registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
                                 billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
     #Act
+    login_as(user)
     visit companies_path
     click_on 'Olist Pax'
     click_on 'Editar'
@@ -25,11 +27,13 @@ describe 'Administrador edita uma transportadora' do
 
   it 'com sucesso' do
     #Arrange
+    user = User.create!(name: 'João', email: 'joao@email.com', password: 'password', admin: true)
     company = Company.create!(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
                                 registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
                                 billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
 
     #Act
+    login_as(user)
     visit(companies_path)
     click_on('Olist Pax')
     click_on('Editar')
@@ -49,10 +53,12 @@ describe 'Administrador edita uma transportadora' do
 
   it 'e mantém os campos obrigatórios' do
     #Arrange
+    user = User.create!(name: 'João', email: 'joao@email.com', password: 'password', admin: true)
     company = Company.create!(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
                                 registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
                                 billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
     #Act
+    login_as(user)
     visit companies_path
     click_on 'Olist Pax'
     click_on 'Editar'
