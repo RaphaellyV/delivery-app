@@ -2,6 +2,25 @@ require 'rails_helper'
 
 RSpec.describe Order, type: :model do
   describe '#valid?' do
+    it 'deve ter um código de rastreamento' do
+      #Arrange
+      Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 
+                                registration_number: '19.629.612/0001-76', postal_code: '80020-090', 
+                                billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
+      
+      order = Order.new(company_id: 1, recipient_name: 'Helena Silva', recipient_registration_number: '198.163.877-14', 
+                        recipient_telephone: '22985202240', recipient_email: 'helena@gmail.com', 
+                        recipient_address: 'Rua Caetés, 360', recipient_postal_code: '24715-520', 
+                        recipient_city: 'Maricá', recipient_state: 'RJ', product_code:'TV40-SAMS-XPTO', 
+                        product_length: '90', product_height: '60', product_width: '10', product_weight: '10000', 
+                        address: 'Rua das Bandeiras, 450', postal_code: '53300-000', city: 'São Paulo', state: 'SP')
+ 
+      #Act
+     
+      #Assert
+      expect(order.valid?).to eq true
+    end
+
     context 'presence' do
       it 'falso quando o destinatário não é preenchido' do
         #Arrange
@@ -21,6 +40,7 @@ RSpec.describe Order, type: :model do
         #Assert
         expect(order.valid?).to eq false
       end
+      
       it 'falso quando o CPF não é preenchido' do
         #Arrange
         Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 

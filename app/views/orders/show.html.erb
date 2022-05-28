@@ -1,6 +1,7 @@
 <h2><%= Order.model_name.human %></h2>
 
 <h3><%= Order.human_attribute_name(:company_id) %>: <%= @order.company.full_description %></h3>
+<h3><%= Order.human_attribute_name(:tracking_code) %>: <%= @order.tracking_code %></h3>
   
 <section>
   <h4>DADOS DO DESTINATÁRIO</h4>

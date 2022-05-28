@@ -1,12 +1,12 @@
 class Order < ApplicationRecord
   belongs_to :company
 
-  before_create :generate_tracking_code
+  before_validation :generate_tracking_code
 
   validates :recipient_name, :recipient_registration_number, :recipient_telephone, 
             :recipient_email, :recipient_address, :recipient_postal_code, :recipient_city, :recipient_state,
             :product_code, :product_length, :product_height, :product_width, :product_weight, :address, 
-            :postal_code, :city, :state, presence: true
+            :postal_code, :city, :state, :tracking_code, presence: true
   validates :recipient_registration_number, format: {with: /\A\d{3}\.?\d{3}\.?\d{3}\-?\d{2}\Z/}
   validates :recipient_telephone, format: {with: /\A\(?\d{2}\)?\d{4,5}\-?\d{4}\Z/}
   validates :recipient_email, format: {with: /\A[^@\s]+@[^@\s]+\z/}
@@ -28,6 +28,6 @@ class Order < ApplicationRecord
   private
 
   def generate_tracking_code
-    self.tracking_code = SecureRandom.alphanumeric(15)
+    self.tracking_code = SecureRandom.alphanumeric(15).upcase
   end
 end

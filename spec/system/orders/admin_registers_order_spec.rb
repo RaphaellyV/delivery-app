@@ -22,6 +22,8 @@ describe 'Administrador cadastra uma ordem de serviço' do
     company = Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 
                     registration_number: '19.629.612/0001-76', postal_code: '80020-090', 
                     billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
+    
+    allow(SecureRandom).to receive(:alphanumeric).with(15).and_return('ABCDEFG12345678')
 
     #Act
     login_as(user)
@@ -65,6 +67,7 @@ describe 'Administrador cadastra uma ordem de serviço' do
     expect(page).to have_content 'CEP de Coleta: 53300-000'
   
     expect(page).to have_content 'Transportadora Responsável: ASAP Log | Asap Log Ltda | PR'
+    expect(page).to have_content 'Código de Rastreamento: ABCDEFG12345678'
     expect(page).not_to have_content 'Olist Pax'
   end
 

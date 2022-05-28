@@ -22,3 +22,4 @@ pt-BR:
         postal_code: 'CEP de Coleta'
         city: 'Cidade de Coleta'
         state: 'Estado de Coleta'
+        tracking_code: 'Código de Rastreamento'
