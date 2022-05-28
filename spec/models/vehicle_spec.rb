@@ -3,90 +3,98 @@ require 'rails_helper'
 RSpec.describe Vehicle, type: :model do
   describe '#valid?' do
     context 'presença' do
-      it 'falso quando a placa não é preenchida' do
+      it 'a placa do carro deve ser preenchida' do
         #Arrange
-        vehicle = Vehicle.new(license_plate: '', v_brand: 'Mercedes-Benz', v_model: 'Accelo 815', v_year:2019, max_load: 8_000)
+        vehicle = Vehicle.new(license_plate: '')
    
         #Act
-       
+        vehicle.valid?
+
         #Assert
-        expect(vehicle.valid?).to eq false
+        expect(vehicle.errors.include?(:license_plate)).to be true
       end
 
-      it 'falso quando a marca não é preenchida' do
+      it 'a marca do carro deve ser preenchida' do
         #Arrange
-        vehicle = Vehicle.new(license_plate: 'BEE4R22', v_brand: '', v_model: 'Accelo 815', v_year:2019, max_load: 8_000)
+        vehicle = Vehicle.new(v_brand: '')
    
         #Act
-       
+        vehicle.valid?
+
         #Assert
-        expect(vehicle.valid?).to eq false
+        expect(vehicle.errors.include?(:v_brand)).to be true
       end
 
-      it 'falso quando o modelo não é preenchido' do
+      it 'o modelo do carro deve ser preenchido' do
         #Arrange
-        vehicle = Vehicle.new(license_plate: 'BEE4R22', v_brand: 'Mercedes-Benz', v_model: '', v_year:2019, max_load: 8_000)
+        vehicle = Vehicle.new(v_model: '')
    
         #Act
-       
+        vehicle.valid?
+
         #Assert
-        expect(vehicle.valid?).to eq false
+        expect(vehicle.errors.include?(:v_model)).to be true
       end
 
-      it 'falso quando o ano não é preenchido' do
+      it 'o ano do carro deve ser preenchido' do
         #Arrange
-        vehicle = Vehicle.new(license_plate: 'BEE4R22', v_brand: 'Mercedes-Benz', v_model: 'Accelo 815', v_year: '', max_load: 8_000)
+        vehicle = Vehicle.new(v_year: '')
    
         #Act
-       
+        vehicle.valid?
+
         #Assert
-        expect(vehicle.valid?).to eq false
+        expect(vehicle.errors.include?(:v_year)).to be true
       end
 
-      it 'falso quando a carga máxima não é preenchida' do
+      it 'a carga máxima deve ser preenchida' do
         #Arrange
-        vehicle = Vehicle.new(license_plate: 'BEE4R22', v_brand: 'Mercedes-Benz', v_model: 'Accelo 815', v_year: 2019, max_load: '')
+        vehicle = Vehicle.new(max_load: '')
    
         #Act
-       
+        vehicle.valid?
+
         #Assert
-        expect(vehicle.valid?).to eq false
+        expect(vehicle.errors.include?(:max_load)).to be true
       end
     end
 
     context 'uniqueness' do
-      it 'falso quando a placa já está em uso' do
+      it 'a placa do carro deve ser única' do
         #Arrange
-        first_vehicle = Vehicle.create(license_plate: 'BEE4R22', v_brand: 'Mercedes-Benz', v_model: 'Accelo 815', v_year:2019, max_load: 8_000)
+        first_vehicle = Vehicle.create!(license_plate: 'BEE4R22', v_brand: 'Mercedes-Benz', v_model: 'Accelo 815', v_year:2019, max_load: 8_000)
 
-        second_vehicle = Vehicle.create(license_plate: 'BEE4R22', v_brand: 'Ford', v_model: 'Cargo 816', v_year:2018, max_load: 7_000)         
+        second_vehicle = Vehicle.new(license_plate: 'BEE4R22')         
   
         #Act
-  
+        second_vehicle.valid?
+
         #Assert
-        expect(second_vehicle.valid?).to eq false
+        expect(second_vehicle.errors.include?(:license_plate)).to be true
       end
     end
 
     context 'format' do
-      it 'falso quando a placa tem menos dígitos que o esperado' do
+      it 'a placa do carro não deve ter menos que 7 dígitos' do
         #Arrange
-        vehicle = Vehicle.new(license_plate: 'BE4R22', v_brand: 'Mercedes-Benz', v_model: 'Accelo 815', v_year:2019, max_load: 8_000)
+        vehicle = Vehicle.new(license_plate: 'BE4R22')
 
         #Act
-          
+        vehicle.valid?
+
         #Assert
-        expect(vehicle.valid?).to eq false
+        expect(vehicle.errors.include?(:license_plate)).to be true
       end
 
-      it 'falso quando a placa tem mais dígitos que o esperado' do
+      it 'a placa não deve ter mais que 7 dígitos' do
         #Arrange
-        vehicle = Vehicle.new(license_plate: 'BEE4R222', v_brand: 'Mercedes-Benz', v_model: 'Accelo 815', v_year:2019, max_load: 8_000)
+        vehicle = Vehicle.new(license_plate: 'BEE4R222')
 
         #Act
-          
+        vehicle.valid?
+
         #Assert
-        expect(vehicle.valid?).to eq false
+        expect(vehicle.errors.include?(:license_plate)).to be true
       end
     end
   end

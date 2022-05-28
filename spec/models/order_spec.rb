@@ -22,500 +22,292 @@ RSpec.describe Order, type: :model do
     end
 
     context 'presence' do
-      it 'falso quando o destinatário não é preenchido' do
+      it 'o destinatário deve ser preenchido' do
         #Arrange
-        Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 
-                                  registration_number: '19.629.612/0001-76', postal_code: '80020-090', 
-                                  billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
-        
-        order = Order.new(company_id: 1, recipient_name: '', recipient_registration_number: '198.163.877-14', 
-                          recipient_telephone: '22985202240', recipient_email: 'helena@gmail.com', 
-                          recipient_address: 'Rua Caetés, 360', recipient_postal_code: '24715-520', 
-                          recipient_city: 'Maricá', recipient_state: 'RJ', product_code:'TV40-SAMS-XPTO', 
-                          product_length: '90', product_height: '60', product_width: '10', product_weight: '10000', 
-                          address: 'Rua das Bandeiras, 450', postal_code: '53300-000', city: 'São Paulo', state: 'SP')
+        order = Order.new(recipient_name: '')
    
         #Act
-       
+        order.valid?
+
         #Assert
-        expect(order.valid?).to eq false
+        expect(order.errors.include?(:recipient_name)).to be true
       end
       
-      it 'falso quando o CPF não é preenchido' do
+      it 'o CPF deve ser preenchido' do
         #Arrange
-        Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 
-                                  registration_number: '19.629.612/0001-76', postal_code: '80020-090', 
-                                  billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
-        
-        order = Order.new(company_id: 1, recipient_name: 'Helena Silva', recipient_registration_number: '', 
-                          recipient_telephone: '22985202240', recipient_email: 'helena@gmail.com', 
-                          recipient_address: 'Rua Caetés, 360', recipient_postal_code: '24715-520', 
-                          recipient_city: 'Maricá', recipient_state: 'RJ', product_code:'TV40-SAMS-XPTO', 
-                          product_length: '90', product_height: '60', product_width: '10', product_weight: '10000', 
-                          address: 'Rua das Bandeiras, 450', postal_code: '53300-000', city: 'São Paulo', state: 'SP')
+        order = Order.new(recipient_registration_number: '')
    
         #Act
-       
+        order.valid?
+
         #Assert
-        expect(order.valid?).to eq false
+        expect(order.errors.include?(:recipient_registration_number)).to be true
       end
 
-      it 'falso quando o telefone não é preenchido' do
+      it 'o telefone deve ser preenchido' do
         #Arrange
-        Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 
-                                  registration_number: '19.629.612/0001-76', postal_code: '80020-090', 
-                                  billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
-        
-        order = Order.new(company_id: 1, recipient_name: 'Helena Silva', recipient_registration_number: '198.163.877-14', 
-                          recipient_telephone: '', recipient_email: 'helena@gmail.com', 
-                          recipient_address: 'Rua Caetés, 360', recipient_postal_code: '24715-520', 
-                          recipient_city: 'Maricá', recipient_state: 'RJ', product_code:'TV40-SAMS-XPTO', 
-                          product_length: '90', product_height: '60', product_width: '10', product_weight: '10000', 
-                          address: 'Rua das Bandeiras, 450', postal_code: '53300-000', city: 'São Paulo', state: 'SP')
+        order = Order.new(recipient_telephone: '')
    
         #Act
-       
+        order.valid?
+
         #Assert
-        expect(order.valid?).to eq false
+        expect(order.errors.include?(:recipient_telephone)).to be true
       end
 
-      it 'falso quando o e-mail não é preenchido' do
+      it 'o e-mail deve ser preenchido' do
         #Arrange
-        Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 
-                                  registration_number: '19.629.612/0001-76', postal_code: '80020-090', 
-                                  billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
-        
-        order = Order.new(company_id: 1, recipient_name: 'Helena Silva', recipient_registration_number: '198.163.877-14', 
-                          recipient_telephone: '22985202240', recipient_email: '', 
-                          recipient_address: 'Rua Caetés, 360', recipient_postal_code: '24715-520', 
-                          recipient_city: 'Maricá', recipient_state: 'RJ', product_code:'TV40-SAMS-XPTO', 
-                          product_length: '90', product_height: '60', product_width: '10', product_weight: '10000', 
-                          address: 'Rua das Bandeiras, 450', postal_code: '53300-000', city: 'São Paulo', state: 'SP')
+        order = Order.new(recipient_email: '')
    
         #Act
-       
+        order.valid?
+
         #Assert
-        expect(order.valid?).to eq false
+        expect(order.errors.include?(:recipient_email)).to be true
       end
 
-      it 'falso quando o endereço de destino não é preenchido' do
+      it 'o endereço de destino deve ser preenchido' do
         #Arrange
-        Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 
-                                  registration_number: '19.629.612/0001-76', postal_code: '80020-090', 
-                                  billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
-        
-        order = Order.new(company_id: 1, recipient_name: 'Helena Silva', recipient_registration_number: '198.163.877-14', 
-                          recipient_telephone: '22985202240', recipient_email: 'helena@gmail.com', 
-                          recipient_address: '', recipient_postal_code: '24715-520', 
-                          recipient_city: 'Maricá', recipient_state: 'RJ', product_code:'TV40-SAMS-XPTO', 
-                          product_length: '90', product_height: '60', product_width: '10', product_weight: '10000', 
-                          address: 'Rua das Bandeiras, 450', postal_code: '53300-000', city: 'São Paulo', state: 'SP')
+        order = Order.new(recipient_address: '')
    
         #Act
-       
+        order.valid?
+
         #Assert
-        expect(order.valid?).to eq false
+        expect(order.errors.include?(:recipient_address)).to be true
       end
 
-      it 'falso quando o CEP de destino não é preenchido' do
+      it 'o CEP de destino deve ser preenchido' do
         #Arrange
-        Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 
-                                  registration_number: '19.629.612/0001-76', postal_code: '80020-090', 
-                                  billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
-        
-        order = Order.new(company_id: 1, recipient_name: 'Helena Silva', recipient_registration_number: '198.163.877-14', 
-                          recipient_telephone: '22985202240', recipient_email: 'helena@gmail.com', 
-                          recipient_address: 'Rua Caetés, 360', recipient_postal_code: '', 
-                          recipient_city: 'Maricá', recipient_state: 'RJ', product_code:'TV40-SAMS-XPTO', 
-                          product_length: '90', product_height: '60', product_width: '10', product_weight: '10000', 
-                          address: 'Rua das Bandeiras, 450', postal_code: '53300-000', city: 'São Paulo', state: 'SP')
+        order = Order.new(recipient_postal_code: '')
    
         #Act
-       
+        order.valid?
+
         #Assert
-        expect(order.valid?).to eq false
+        expect(order.errors.include?(:recipient_postal_code)).to be true
       end
 
-      it 'falso quando a cidade de destino não é preenchida' do
+      it 'a cidade de destino deve ser preenchida' do
         #Arrange
-        Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 
-                                  registration_number: '19.629.612/0001-76', postal_code: '80020-090', 
-                                  billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
-        
-        order = Order.new(company_id: 1, recipient_name: 'Helena Silva', recipient_registration_number: '198.163.877-14', 
-                          recipient_telephone: '22985202240', recipient_email: 'helena@gmail.com', 
-                          recipient_address: 'Rua Caetés, 360', recipient_postal_code: '24715-520', 
-                          recipient_city: '', recipient_state: 'RJ', product_code:'TV40-SAMS-XPTO', 
-                          product_length: '90', product_height: '60', product_width: '10', product_weight: '10000', 
-                          address: 'Rua das Bandeiras, 450', postal_code: '53300-000', city: 'São Paulo', state: 'SP')
+        order = Order.new(recipient_city: '')
    
         #Act
-       
+        order.valid?
+
         #Assert
-        expect(order.valid?).to eq false
+        expect(order.errors.include?(:recipient_city)).to be true
       end
 
-      it 'falso quando o estado de destino não é preenchido' do
+      it 'o estado de destino deve ser preenchido' do
         #Arrange
-        Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 
-                                  registration_number: '19.629.612/0001-76', postal_code: '80020-090', 
-                                  billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
-        
-        order = Order.new(company_id: 1, recipient_name: 'Helena Silva', recipient_registration_number: '198.163.877-14', 
-                          recipient_telephone: '22985202240', recipient_email: 'helena@gmail.com', 
-                          recipient_address: 'Rua Caetés, 360', recipient_postal_code: '24715-520', 
-                          recipient_city: 'Maricá', recipient_state: '', product_code:'TV40-SAMS-XPTO', 
-                          product_length: '90', product_height: '60', product_width: '10', product_weight: '10000', 
-                          address: 'Rua das Bandeiras, 450', postal_code: '53300-000', city: 'São Paulo', state: 'SP')
+        order = Order.new(recipient_state: '')
    
         #Act
-       
+        order.valid?
+
         #Assert
-        expect(order.valid?).to eq false
+        expect(order.errors.include?(:recipient_state)).to be true
       end
 
-      it 'falso quando o código do produto não é preenchido' do
+      it 'o código do produto deve ser preenchido' do
         #Arrange
-        Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 
-                                  registration_number: '19.629.612/0001-76', postal_code: '80020-090', 
-                                  billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
-        
-        order = Order.new(company_id: 1, recipient_name: 'Helena Silva', recipient_registration_number: '198.163.877-14', 
-                          recipient_telephone: '22985202240', recipient_email: 'helena@gmail.com', 
-                          recipient_address: 'Rua Caetés, 360', recipient_postal_code: '24715-520', 
-                          recipient_city: 'Maricá', recipient_state: 'RJ', product_code:'', 
-                          product_length: '90', product_height: '60', product_width: '10', product_weight: '10000', 
-                          address: 'Rua das Bandeiras, 450', postal_code: '53300-000', city: 'São Paulo', state: 'SP')
+        order = Order.new(product_code:'')
    
         #Act
-       
+        order.valid?
+
         #Assert
-        expect(order.valid?).to eq false
+        expect(order.errors.include?(:product_code)).to be true
       end
 
-      it 'falso quando o comprimento do produto não é preenchido' do
+      it 'o comprimento do produto deve ser preenchido' do
         #Arrange
-        Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 
-                                  registration_number: '19.629.612/0001-76', postal_code: '80020-090', 
-                                  billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
-        
-        order = Order.new(company_id: 1, recipient_name: 'Helena Silva', recipient_registration_number: '198.163.877-14', 
-                          recipient_telephone: '22985202240', recipient_email: 'helena@gmail.com', 
-                          recipient_address: 'Rua Caetés, 360', recipient_postal_code: '24715-520', 
-                          recipient_city: 'Maricá', recipient_state: 'RJ', product_code:'TV40-SAMS-XPTO', 
-                          product_length: '', product_height: '60', product_width: '10', product_weight: '10000', 
-                          address: 'Rua das Bandeiras, 450', postal_code: '53300-000', city: 'São Paulo', state: 'SP')
+        order = Order.new(product_length: '')
    
         #Act
-       
+        order.valid?
+
         #Assert
-        expect(order.valid?).to eq false
+        expect(order.errors.include?(:product_length)).to be true
       end
 
-      it 'falso quando a altura do produto não é preenchida' do
+      it 'a altura do produto deve ser preenchida' do
         #Arrange
-        Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 
-                                  registration_number: '19.629.612/0001-76', postal_code: '80020-090', 
-                                  billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
-        
-        order = Order.new(company_id: 1, recipient_name: 'Helena Silva', recipient_registration_number: '198.163.877-14', 
-                          recipient_telephone: '22985202240', recipient_email: 'helena@gmail.com', 
-                          recipient_address: 'Rua Caetés, 360', recipient_postal_code: '24715-520', 
-                          recipient_city: 'Maricá', recipient_state: 'RJ', product_code:'TV40-SAMS-XPTO', 
-                          product_length: '90', product_height: '', product_width: '10', product_weight: '10000', 
-                          address: 'Rua das Bandeiras, 450', postal_code: '53300-000', city: 'São Paulo', state: 'SP')
+        order = Order.new(product_height: '')
    
         #Act
-       
+        order.valid?
+
         #Assert
-        expect(order.valid?).to eq false
+        expect(order.errors.include?(:product_height)).to be true
       end
 
-      it 'falso quando a largura do produto não é preenchida' do
+      it 'a largura do produto deve ser preenchida' do
         #Arrange
-        Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 
-                                  registration_number: '19.629.612/0001-76', postal_code: '80020-090', 
-                                  billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
-        
-        order = Order.new(company_id: 1, recipient_name: 'Helena Silva', recipient_registration_number: '198.163.877-14', 
-                          recipient_telephone: '22985202240', recipient_email: 'helena@gmail.com', 
-                          recipient_address: 'Rua Caetés, 360', recipient_postal_code: '24715-520', 
-                          recipient_city: 'Maricá', recipient_state: 'RJ', product_code:'TV40-SAMS-XPTO', 
-                          product_length: '90', product_height: '10', product_width: '', product_weight: '10000', 
-                          address: 'Rua das Bandeiras, 450', postal_code: '53300-000', city: 'São Paulo', state: 'SP')
+        order = Order.new(product_width: '')
    
         #Act
-       
+        order.valid?
+
         #Assert
-        expect(order.valid?).to eq false
+        expect(order.errors.include?(:product_width)).to be true
       end
 
-      it 'falso quando o peso do produto não é preenchido' do
+      it 'o peso do produto deve ser preenchido' do
         #Arrange
-        Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 
-                                  registration_number: '19.629.612/0001-76', postal_code: '80020-090', 
-                                  billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
-        
-        order = Order.new(company_id: 1, recipient_name: 'Helena Silva', recipient_registration_number: '198.163.877-14', 
-                          recipient_telephone: '22985202240', recipient_email: 'helena@gmail.com', 
-                          recipient_address: 'Rua Caetés, 360', recipient_postal_code: '24715-520', 
-                          recipient_city: 'Maricá', recipient_state: 'RJ', product_code:'TV40-SAMS-XPTO', 
-                          product_length: '90', product_height: '10', product_width: '60', product_weight: '', 
-                          address: 'Rua das Bandeiras, 450', postal_code: '53300-000', city: 'São Paulo', state: 'SP')
+        order = Order.new(product_weight: '')
    
         #Act
-       
+        order.valid?
+
         #Assert
-        expect(order.valid?).to eq false
+        expect(order.errors.include?(:product_weight)).to be true
       end
 
-      it 'falso quando o endereço de coleta não é preenchido' do
+      it 'o endereço de coleta deve ser preenchido' do
         #Arrange
-        Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 
-                                  registration_number: '19.629.612/0001-76', postal_code: '80020-090', 
-                                  billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
-        
-        order = Order.new(company_id: 1, recipient_name: 'Helena Silva', recipient_registration_number: '198.163.877-14', 
-                          recipient_telephone: '22985202240', recipient_email: 'helena@gmail.com', 
-                          recipient_address: 'Rua Caetés, 360', recipient_postal_code: '24715-520', 
-                          recipient_city: 'Maricá', recipient_state: 'RJ', product_code:'TV40-SAMS-XPTO', 
-                          product_length: '90', product_height: '10', product_width: '60', product_weight: '10000', 
-                          address: '', postal_code: '53300-000', city: 'São Paulo', state: 'SP')
+        order = Order.new(address: '')
    
         #Act
-       
+        order.valid?
+
         #Assert
-        expect(order.valid?).to eq false
+        expect(order.errors.include?(:address)).to be true
       end
 
-      it 'falso quando o CEP não é preenchido' do
+      it 'o CEP deve ser preenchido' do
         #Arrange
-        Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 
-                                  registration_number: '19.629.612/0001-76', postal_code: '80020-090', 
-                                  billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
-        
-        order = Order.new(company_id: 1, recipient_name: 'Helena Silva', recipient_registration_number: '198.163.877-14', 
-                          recipient_telephone: '22985202240', recipient_email: 'helena@gmail.com', 
-                          recipient_address: 'Rua Caetés, 360', recipient_postal_code: '24715-520', 
-                          recipient_city: 'Maricá', recipient_state: 'RJ', product_code:'TV40-SAMS-XPTO', 
-                          product_length: '90', product_height: '10', product_width: '60', product_weight: '10000', 
-                          address: 'Rua das Bandeiras, 450', postal_code: '', city: 'São Paulo', state: 'SP')
+        order = Order.new(postal_code: '')
    
         #Act
-       
+        order.valid?
+
         #Assert
-        expect(order.valid?).to eq false
+        expect(order.errors.include?(:postal_code)).to be true
       end
 
-      it 'falso quando a cidade não é preenchida' do
+      it 'a cidade deve ser preenchida' do
         #Arrange
-        Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 
-                                  registration_number: '19.629.612/0001-76', postal_code: '80020-090', 
-                                  billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
-        
-        order = Order.new(company_id: 1, recipient_name: 'Helena Silva', recipient_registration_number: '198.163.877-14', 
-                          recipient_telephone: '22985202240', recipient_email: 'helena@gmail.com', 
-                          recipient_address: 'Rua Caetés, 360', recipient_postal_code: '24715-520', 
-                          recipient_city: 'Maricá', recipient_state: 'RJ', product_code:'TV40-SAMS-XPTO', 
-                          product_length: '90', product_height: '10', product_width: '60', product_weight: '10000', 
-                          address: 'Rua das Bandeiras, 450', postal_code: '53300-000', city: '', state: 'SP')
+        order = Order.new(city: '')
    
         #Act
-       
+        order.valid?
+
         #Assert
-        expect(order.valid?).to eq false
+        expect(order.errors.include?(:city)).to be true
       end
 
-      it 'falso quando o estado não é preenchido' do
+      it 'o estado deve ser preenchido' do
         #Arrange
-        Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 
-                                  registration_number: '19.629.612/0001-76', postal_code: '80020-090', 
-                                  billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
-        
-        order = Order.new(company_id: 1, recipient_name: 'Helena Silva', recipient_registration_number: '198.163.877-14', 
-                          recipient_telephone: '22985202240', recipient_email: 'helena@gmail.com', 
-                          recipient_address: 'Rua Caetés, 360', recipient_postal_code: '24715-520', 
-                          recipient_city: 'Maricá', recipient_state: 'RJ', product_code:'TV40-SAMS-XPTO', 
-                          product_length: '90', product_height: '10', product_width: '60', product_weight: '10000', 
-                          address: 'Rua das Bandeiras, 450', postal_code: '53300-000', city: 'São Paulo', state: '')
+        order = Order.new(state: '')
    
         #Act
-       
+        order.valid?
+
         #Assert
-        expect(order.valid?).to eq false
+        expect(order.errors.include?(:state)).to be true
       end
     end
 
     context 'format' do
-      it 'falso quando o CPF tem menos dígitos que o esperado' do
+      it 'o CPF deve ter menos que 11 dígitos' do
         #Arrange
-        Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 
-          registration_number: '19.629.612/0001-76', postal_code: '80020-090', 
-          billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
-
-        order = Order.new(company_id: 1, recipient_name: 'Helena Silva', recipient_registration_number: '198.163.877-4', 
-          recipient_telephone: '22985202240', recipient_email: 'helena@gmail.com', 
-          recipient_address: 'Rua Caetés, 360', recipient_postal_code: '24715-520', 
-          recipient_city: 'Maricá', recipient_state: 'RJ', product_code:'TV40-SAMS-XPTO', 
-          product_length: '90', product_height: '60', product_width: '10', product_weight: '10000', 
-          address: 'Rua das Bandeiras, 450', postal_code: '53300-000', city: 'São Paulo', state: 'SP')
+        order = Order.new(recipient_registration_number: '198.163.877-4')
         
         #Act
-          
+        order.valid?
+
         #Assert
-        expect(order.valid?).to eq false
+        expect(order.errors.include?(:recipient_registration_number)).to be true
       end
 
-      it 'falso quando o CPF tem mais dígitos que o esperado' do
+      it 'o CPF não deve ter mais que 11 dígitos' do
         #Arrange
-        Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 
-          registration_number: '19.629.612/0001-76', postal_code: '80020-090', 
-          billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
-
-        order = Order.new(company_id: 1, recipient_name: 'Helena Silva', recipient_registration_number: '198.163.877-444', 
-          recipient_telephone: '22985202240', recipient_email: 'helena@gmail.com', 
-          recipient_address: 'Rua Caetés, 360', recipient_postal_code: '24715-520', 
-          recipient_city: 'Maricá', recipient_state: 'RJ', product_code:'TV40-SAMS-XPTO', 
-          product_length: '90', product_height: '60', product_width: '10', product_weight: '10000', 
-          address: 'Rua das Bandeiras, 450', postal_code: '53300-000', city: 'São Paulo', state: 'SP')
+        order = Order.new(recipient_registration_number: '198.163.877-444')
         
         #Act
-          
+        order.valid?
+
         #Assert
-        expect(order.valid?).to eq false
+        expect(order.errors.include?(:recipient_registration_number)).to be true
       end
 
-      it 'falso quando o telefone tem menos dígitos que o esperado' do
+      it 'o telefone não deve ter menos que 10' do
         #Arrange
-        Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 
-          registration_number: '19.629.612/0001-76', postal_code: '80020-090', 
-          billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
-
-        order = Order.new(company_id: 1, recipient_name: 'Helena Silva', recipient_registration_number: '198.163.877-44', 
-          recipient_telephone: '229852220', recipient_email: 'helena@gmail.com', 
-          recipient_address: 'Rua Caetés, 360', recipient_postal_code: '24715-520', 
-          recipient_city: 'Maricá', recipient_state: 'RJ', product_code:'TV40-SAMS-XPTO', 
-          product_length: '90', product_height: '60', product_width: '10', product_weight: '10000', 
-          address: 'Rua das Bandeiras, 450', postal_code: '53300-000', city: 'São Paulo', state: 'SP')
+        order = Order.new(recipient_telephone: '229852220')
         
         #Act
-          
+        order.valid?
+
         #Assert
-        expect(order.valid?).to eq false
+        expect(order.errors.include?(:recipient_telephone)).to be true
       end
 
-      it 'falso quando o telefone tem mais dígitos que o esperado' do
+      it 'o telefone não deve ter mais que 11 dígitos' do
         #Arrange
-        Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 
-          registration_number: '19.629.612/0001-76', postal_code: '80020-090', 
-          billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
-
-        order = Order.new(company_id: 1, recipient_name: 'Helena Silva', recipient_registration_number: '198.163.877-44', 
-          recipient_telephone: '229852200320', recipient_email: 'helena@gmail.com', 
-          recipient_address: 'Rua Caetés, 360', recipient_postal_code: '24715-520', 
-          recipient_city: 'Maricá', recipient_state: 'RJ', product_code:'TV40-SAMS-XPTO', 
-          product_length: '90', product_height: '60', product_width: '10', product_weight: '10000', 
-          address: 'Rua das Bandeiras, 450', postal_code: '53300-000', city: 'São Paulo', state: 'SP')
+        order = Order.new(recipient_telephone: '229852200320')
         
         #Act
-          
+        order.valid?
+
         #Assert
-        expect(order.valid?).to eq false
+        expect(order.errors.include?(:recipient_telephone)).to be true
       end
 
-      it 'falso quando o e-mail não é válido' do
+      it 'o e-mail deve ter um formato válido' do
         #Arrange
-        Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 
-          registration_number: '19.629.612/0001-76', postal_code: '80020-090', 
-          billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
-
-        order = Order.new(company_id: 1, recipient_name: 'Helena Silva', recipient_registration_number: '198.163.877-44', 
-          recipient_telephone: '22985200320', recipient_email: '@gmail.com', 
-          recipient_address: 'Rua Caetés, 360', recipient_postal_code: '24715-520', 
-          recipient_city: 'Maricá', recipient_state: 'RJ', product_code:'TV40-SAMS-XPTO', 
-          product_length: '90', product_height: '60', product_width: '10', product_weight: '10000', 
-          address: 'Rua das Bandeiras, 450', postal_code: '53300-000', city: 'São Paulo', state: 'SP')
+        order = Order.new(recipient_email: '@gmail.com')
         
         #Act
-          
+        order.valid?
+
         #Assert
-        expect(order.valid?).to eq false
+        expect(order.errors.include?(:recipient_email)).to be true
       end
 
-      it 'falso quando o CEP de destino tem menos dígitos que o esperado' do
+      it 'o CEP de destino não deve ter menos que 8 dígitos' do
         #Arrange
-        Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 
-          registration_number: '19.629.612/0001-76', postal_code: '80020-090', 
-          billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
-
-        order = Order.new(company_id: 1, recipient_name: 'Helena Silva', recipient_registration_number: '198.163.877-44', 
-          recipient_telephone: '22985200320', recipient_email: 'helena@gmail.com', 
-          recipient_address: 'Rua Caetés, 360', recipient_postal_code: '2715-520', 
-          recipient_city: 'Maricá', recipient_state: 'RJ', product_code:'TV40-SAMS-XPTO', 
-          product_length: '90', product_height: '60', product_width: '10', product_weight: '10000', 
-          address: 'Rua das Bandeiras, 450', postal_code: '53300-000', city: 'São Paulo', state: 'SP')
+        order = Order.new(recipient_postal_code: '2715-520')
         
         #Act
-          
+        order.valid?
+
         #Assert
-        expect(order.valid?).to eq false
+        expect(order.errors.include?(:recipient_postal_code)).to be true
       end
 
-      it 'falso quando o CEP de destino tem mais dígitos que o esperado' do
+      it 'o CEP de destino não deve ter mais que 8 dígitos' do
         #Arrange
-        Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 
-          registration_number: '19.629.612/0001-76', postal_code: '80020-090', 
-          billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
-
-        order = Order.new(company_id: 1, recipient_name: 'Helena Silva', recipient_registration_number: '198.163.877-44', 
-          recipient_telephone: '22985200320', recipient_email: 'helena@gmail.com', 
-          recipient_address: 'Rua Caetés, 360', recipient_postal_code: '270015-520', 
-          recipient_city: 'Maricá', recipient_state: 'RJ', product_code:'TV40-SAMS-XPTO', 
-          product_length: '90', product_height: '60', product_width: '10', product_weight: '10000', 
-          address: 'Rua das Bandeiras, 450', postal_code: '53300-000', city: 'São Paulo', state: 'SP')
+        order = Order.new(recipient_postal_code: '270015-520')
         
         #Act
-          
+        order.valid?
+
         #Assert
-        expect(order.valid?).to eq false
+        expect(order.errors.include?(:recipient_postal_code)).to be true
       end
 
-      it 'falso quando o CEP de coleta tem menos dígitos que o esperado' do
+      it 'o CEP de coleta não deve ter menos que 8 dígitos' do
         #Arrange
-        Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 
-          registration_number: '19.629.612/0001-76', postal_code: '80020-090', 
-          billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
-
-        order = Order.new(company_id: 1, recipient_name: 'Helena Silva', recipient_registration_number: '198.163.877-44', 
-          recipient_telephone: '22985200320', recipient_email: 'helena@gmail.com', 
-          recipient_address: 'Rua Caetés, 360', recipient_postal_code: '27015-520', 
-          recipient_city: 'Maricá', recipient_state: 'RJ', product_code:'TV40-SAMS-XPTO', 
-          product_length: '90', product_height: '60', product_width: '10', product_weight: '10000', 
-          address: 'Rua das Bandeiras, 450', postal_code: '5300-000', city: 'São Paulo', state: 'SP')
+        order = Order.new(postal_code: '5300-000')
         
         #Act
-          
+        order.valid?
+
         #Assert
-        expect(order.valid?).to eq false
+        expect(order.errors.include?(:postal_code)).to be true
       end
 
-      it 'falso quando o CEP de coleta tem mais dígitos que o esperado' do
+      it 'o CEP de coleta não deve ter mais que 8 dígitos' do
         #Arrange
-        Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 
-          registration_number: '19.629.612/0001-76', postal_code: '80020-090', 
-          billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
-
-        order = Order.new(company_id: 1, recipient_name: 'Helena Silva', recipient_registration_number: '198.163.877-44', 
-          recipient_telephone: '22985200320', recipient_email: 'helena@gmail.com', 
-          recipient_address: 'Rua Caetés, 360', recipient_postal_code: '27015-520', 
-          recipient_city: 'Maricá', recipient_state: 'RJ', product_code:'TV40-SAMS-XPTO', 
-          product_length: '90', product_height: '60', product_width: '10', product_weight: '10000', 
-          address: 'Rua das Bandeiras, 450', postal_code: '530000-000', city: 'São Paulo', state: 'SP')
+        order = Order.new(postal_code: '530000-000')
         
         #Act
-          
+        order.valid?
+
         #Assert
-        expect(order.valid?).to eq false
+        expect(order.errors.include?(:postal_code)).to be true
       end
     end
   end

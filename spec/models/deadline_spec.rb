@@ -2,57 +2,61 @@ require 'rails_helper'
 
 RSpec.describe Deadline, type: :model do
   describe '#valid?' do
-    context 'presença' do
-      it 'falso quando a distância mínima não é preenchida' do
+    context 'presence' do
+      it 'a distância mínima deve ser obrigatória' do
         #Arrange
-        deadline = Deadline.new(min_distance: '', max_distance: 30, max_days: 5)
+        deadline = Deadline.new(min_distance: '')
    
         #Act
-       
+        deadline.valid?
+
         #Assert
-        expect(deadline.valid?).to eq false
+        expect(deadline.errors.include?(:min_distance)).to be true
       end
 
-      it 'falso quando a distância máxima não é preenchida' do
+      it 'a distância máxima deve ser obrigatória' do
         #Arrange
-        deadline = Deadline.new(min_distance: 3, max_distance: '', max_days: 5)
+        deadline = Deadline.new(max_distance: '')
    
         #Act
-       
+        deadline.valid?
+
         #Assert
-        expect(deadline.valid?).to eq false
+        expect(deadline.errors.include?(:max_distance)).to be true
       end
 
-      it 'falso quando o prazo não é preenchido' do
+      it 'o prazo deve ser obrigatório' do
         #Arrange
-        deadline = Deadline.new(min_distance: 3, max_distance: 30, max_days: '')
+        deadline = Deadline.new(max_days: '')
    
         #Act
-       
+        deadline.valid?
+
         #Assert
-        expect(deadline.valid?).to eq false
+        expect(deadline.errors.include?(:max_days)).to be true
       end
     end
 
     context 'uniqueness' do
       
-      it 'falso quando o prazo já foi cadastrado' do
+      it 'o prazo deve ser único' do
         #Arrange
-        first_deadline = Deadline.create(min_distance: 3, max_distance: 30, max_days: 5)
+        first_deadline = Deadline.create!(min_distance: 3, max_distance: 30, max_days: 5)
 
-        second_deadline = Deadline.create(min_distance: 31, max_distance: 62, max_days: 5)         
+        second_deadline = Deadline.new(max_days: 5)         
   
         #Act
-  
+        second_deadline.valid?
+
         #Assert
-        expect(second_deadline.valid?).to eq false
+        expect(second_deadline.errors.include?(:max_days)).to be true
       end
     end
 
     context 'less than' do
-      it 'falso quando a distância máxima é menor que a distância mínima' do
+      it 'a distância máxima deve ser maior que a distância mínima' do
         #Arrange
-        deadline = Deadline.create(min_distance: 30, max_distance: 20, max_days: 4)      
+        deadline = Deadline.new(min_distance: 30, max_distance: 20, max_days: 4)      
   
         #Act
   

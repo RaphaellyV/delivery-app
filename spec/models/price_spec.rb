@@ -3,75 +3,81 @@ require 'rails_helper'
 RSpec.describe Price, type: :model do
   describe '#valid?' do
     context 'presence' do
-      it 'falso quando o volume mínimo não é preenchido' do
+      it 'o volume mínimo deve ser preenchido' do
         #Arrange
-        price = Price.new(min_vol: '', max_vol: 10, min_weight: 0.7, max_weight: 15, price_per_km: 5)
+        price = Price.new(min_vol: '')
    
         #Act
-       
+        price.valid?
+
         #Assert
-        expect(price.valid?).to eq false
+        expect(price.errors.include?(:min_vol)).to be true
       end
 
-      it 'falso quando o volume máximo não é preenchido' do
+      it 'o volume máximo deve ser preenchido' do
         #Arrange
-        price = Price.new(min_vol: 0.5, max_vol: '', min_weight: 0.7, max_weight: 15, price_per_km: 5)
+        price = Price.new(max_vol: '')
    
         #Act
-       
+        price.valid?
+
         #Assert
-        expect(price.valid?).to eq false
+        expect(price.errors.include?(:max_vol)).to be true
       end
 
-      it 'falso quando o peso mínimo não é preenchido' do
+      it 'o peso mínimo deve ser preenchido' do
         #Arrange
-        price = Price.new(min_vol: 0.5, max_vol: 10, min_weight: '', max_weight: 15, price_per_km: 5)
+        price = Price.new(min_weight: '')
    
         #Act
-       
+        price.valid?
+
         #Assert
-        expect(price.valid?).to eq false
+        expect(price.errors.include?(:min_weight)).to be true
       end
 
-      it 'falso quando o peso máximo não é preenchido' do
+      it 'o peso máximo deve ser preenchido' do
         #Arrange
-        price = Price.new(min_vol: 0.5, max_vol: 10, min_weight: 0.7, max_weight: '', price_per_km: 5)
+        price = Price.new(max_weight: '')
    
         #Act
-       
+        price.valid?
+
         #Assert
-        expect(price.valid?).to eq false
+        expect(price.errors.include?(:max_weight)).to be true
       end
 
-      it 'falso quando o preço por km não é preenchido' do
+      it 'o preço por km deve ser preenchido' do
         #Arrange
-        price = Price.new(min_vol: 0.5, max_vol: 10, min_weight: 0.7, max_weight:15, price_per_km: '')
+        price = Price.new(price_per_km: '')
    
         #Act
-       
+        price.valid?
+
         #Assert
-        expect(price.valid?).to eq false
+        expect(price.errors.include?(:price_per_km)).to be true
       end
     end
 
     context 'uniqueness' do
-      it 'falso quando o preço já foi cadastrado' do
+      it 'o preço deve ser único' do
         #Arrange
-        first_price = Price.create(min_vol: 0.5, max_vol: 10, min_weight: 0.7, max_weight: 15, price_per_km: 5)
+        first_price = Price.create!(min_vol: 0.5, max_vol: 10, min_weight: 0.7, max_weight: 15, price_per_km: 5)
 
-        second_price = Price.create(min_vol: 10.01, max_vol: 14, min_weight: 15.01, max_weight:30, price_per_km: 5)         
+        second_price = Price.new(price_per_km: 5)         
   
         #Act
-  
+        second_price.valid?
+
         #Assert
-        expect(second_price.valid?).to eq false
+        expect(second_price.errors.include?(:price_per_km)).to be true
       end
     end
 
     context 'less than' do
-      it 'falso quando o volume máximo é menor que o volume mínimo' do
+      it 'o volume máximo deve ser maior que o volume mínimo' do
         #Arrange
-        price = Price.create(min_vol: 11, max_vol: 10, min_weight: 0.7, max_weight: 15, price_per_km: 5)      
+        price = Price.new(min_vol: 11, max_vol: 10, min_weight: 0.7, max_weight: 15, price_per_km: 5)      
   
         #Act
   
@@ -79,9 +85,9 @@ RSpec.describe Price, type: :model do
         expect(price.valid?).to eq false
       end
 
-      it 'falso quando o peso máximo é menor que o peso mínimo' do
+      it 'o peso máximo deve ser maior que o peso mínimo' do
         #Arrange
-        price = Price.create(min_vol: 0.5, max_vol: 10, min_weight: 16, max_weight: 15, price_per_km: 5)      
+        price = Price.new(min_vol: 0.5, max_vol: 10, min_weight: 16, max_weight: 15, price_per_km: 5)      
   
         #Act
   
