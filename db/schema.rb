@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_27_164517) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_28_042110) do
   create_table "companies", force: :cascade do |t|
     t.string "brand_name"
     t.string "corporate_name"
@@ -53,6 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_27_164517) do
     t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "tracking_code"
     t.index ["company_id"], name: "index_orders_on_company_id"
   end
 

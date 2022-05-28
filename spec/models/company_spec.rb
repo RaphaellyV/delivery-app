@@ -133,67 +133,80 @@ RSpec.describe Company, type: :model do
         expect(second_company.valid?).to eq false
       end
     end
-  end
 
-  context 'format' do
-    it 'falso quando o CEP tem menos dígitos que o esperado' do
-      #Arrange
-      company = Company.new(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
-                            registration_number: '30.320.042/0001-70', postal_code: '26360-00', 
-                            billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
-      
-      #Act
+    context 'format' do
+      it 'falso quando o CEP tem menos dígitos que o esperado' do
+        #Arrange
+        company = Company.new(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
+                              registration_number: '30.320.042/0001-70', postal_code: '26360-00', 
+                              billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
         
-      #Assert
-      expect(company.valid?).to eq false
+        #Act
+          
+        #Assert
+        expect(company.valid?).to eq false
+      end
+  
+      it 'falso quando o CEP tem mais dígitos que o esperado' do
+        #Arrange
+        company = Company.new(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
+                              registration_number: '30.320.042/0001-70', postal_code: '26360-0000', 
+                              billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
+        
+        #Act
+          
+        #Assert
+        expect(company.valid?).to eq false
+      end
+  
+      it 'falso quando o CNPJ tem menos dígitos que o esperado' do
+        #Arrange
+        company = Company.new(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
+                              registration_number: '30.320.042/0001-7', postal_code: '26360-000', 
+                              billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
+        
+        #Act
+          
+        #Assert
+        expect(company.valid?).to eq false
+      end
+  
+      it 'falso quando o CNPJ tem mais dígitos que o esperado' do
+        #Arrange
+        company = Company.new(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
+                              registration_number: '30.320.042/0001-700', postal_code: '26360-000', 
+                              billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
+        
+        #Act
+          
+        #Assert
+        expect(company.valid?).to eq false
+      end
+  
+      it 'falso quando o domínio tem o formato incorreto' do
+        #Arrange
+        company = Company.new(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'olistpax.com.br', 
+                              registration_number: '30.320.042/0001-70', postal_code: '26360-000', 
+                              billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
+        
+        #Act
+          
+        #Assert
+        expect(company.valid?).to eq false
+      end
     end
+  end  
 
-    it 'falso quando o CEP tem mais dígitos que o esperado' do
+  describe '#full_description' do
+    it 'exibe o nome fantasia, a razão social e o estado' do
       #Arrange
-      company = Company.new(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
-                            registration_number: '30.320.042/0001-70', postal_code: '26360-0000', 
-                            billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
-      
-      #Act
-        
-      #Assert
-      expect(company.valid?).to eq false
-    end
+      company = Company.new(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', state: 'SP')
 
-    it 'falso quando o CNPJ tem menos dígitos que o esperado' do
-      #Arrange
-      company = Company.new(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
-                            registration_number: '30.320.042/0001-7', postal_code: '26360-000', 
-                            billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
-      
       #Act
-        
-      #Assert
-      expect(company.valid?).to eq false
-    end
+      result = company.full_description
 
-    it 'falso quando o CNPJ tem mais dígitos que o esperado' do
-      #Arrange
-      company = Company.new(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
-                            registration_number: '30.320.042/0001-700', postal_code: '26360-000', 
-                            billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
-      
-      #Act
-        
       #Assert
-      expect(company.valid?).to eq false
-    end
-
-    it 'falso quando o domínio tem o formato incorreto' do
-      #Arrange
-      company = Company.new(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'olistpax.com.br', 
-                            registration_number: '30.320.042/0001-70', postal_code: '26360-000', 
-                            billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
-      
-      #Act
-        
-      #Assert
-      expect(company.valid?).to eq false
+      expect(result).to eq('Olist Pax | PAX TECNOLOGIA EIRELI (“PAX”) | SP')
     end
   end
 end
