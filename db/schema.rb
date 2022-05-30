@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_28_042110) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_30_051111) do
   create_table "companies", force: :cascade do |t|
     t.string "brand_name"
     t.string "corporate_name"
@@ -77,6 +77,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_28_042110) do
     t.boolean "admin", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "company_id"
+    t.index ["company_id"], name: "index_users_on_company_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -92,4 +94,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_28_042110) do
   end
 
   add_foreign_key "orders", "companies"
+  add_foreign_key "users", "companies"
 end

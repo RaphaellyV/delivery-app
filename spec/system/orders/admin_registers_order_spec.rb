@@ -13,7 +13,10 @@ describe 'Administrador cadastra uma ordem de serviço' do
 
   it 'com sucesso' do
     #Arrange
-    user = User.create!(name: 'João', email: 'joao@email.com', password: 'password', admin: true)
+    Company.create!(brand_name: 'Sistema de Frete', corporate_name: 'Sistema de Frete LTDA', domain:'@sistemadefrete.com.br', 
+                    registration_number: '30.320.042/0001-71', postal_code: '06460-000', 
+                    billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
+    user = User.create!(name: 'João', email: 'joao@sistemadefrete.com.br', password: 'password')
 
     Company.create!(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
                     registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
@@ -73,7 +76,10 @@ describe 'Administrador cadastra uma ordem de serviço' do
 
   it 'com dados incompletos' do
     #Arrange
-    user = User.create!(name: 'João', email: 'joao@email.com', password: 'password', admin: true)
+    Company.create!(brand_name: 'Sistema de Frete', corporate_name: 'Sistema de Frete LTDA', domain:'@sistemadefrete.com.br', 
+                    registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
+                    billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
+    user = User.create!(name: 'João', email: 'joao@sistemadefrete.com.br', password: 'password')
     company = Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 
                               registration_number: '19.629.612/0001-76', postal_code: '80020-090', 
                               billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')

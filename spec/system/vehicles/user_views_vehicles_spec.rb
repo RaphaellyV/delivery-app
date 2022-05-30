@@ -14,7 +14,11 @@ describe 'Usuário vê veículos' do
 
   it 'com sucesso' do
     #Arrange
-    user = User.create!(name: 'João', email: 'joao@transportadora.com', password: 'password')
+    Company.create!(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
+                    registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
+                    billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
+    user = User.create!(name: 'João', email: 'joao@olistpax.com.br', password: 'password')
+    
     Vehicle.create!(license_plate: 'BEE4R22', v_brand: 'Mercedes-Benz', v_model: 'Accelo 815', v_year:2019, max_load: 8_000)
     Vehicle.create!(license_plate: 'HMG0248', v_brand: 'Ford', v_model: 'Cargo 816', v_year:2018, max_load: 7_000)
 
@@ -43,7 +47,10 @@ describe 'Usuário vê veículos' do
 
   it 'e não existem veículos ativos' do
     #Arrange
-    user = User.create!(name: 'João', email: 'joao@transportadora.com', password: 'password')
+    Company.create!(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
+                    registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
+                    billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
+    user = User.create!(name: 'João', email: 'joao@olistpax.com.br', password: 'password')
 
     #Act
     login_as(user)

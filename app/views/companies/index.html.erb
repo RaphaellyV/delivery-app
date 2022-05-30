@@ -3,11 +3,13 @@
   <nav><%=link_to 'Cadastrar Transportadora', new_company_path%></nav>
 
   <%@companies.each do |c|%>
+    <% if c.domain != '@sistemadefrete.com.br'%>
     <div>
       <h3><%= link_to c.brand_name, c%> - <%= c.state %></h3>
     </div>
+    <% end %>
   <% end %>
 
-  <%if @companies.empty?%>
+  <%if @companies.count == 1 && @companies[0].domain == '@sistemadefrete.com.br' %>
     <p>Não existem transportadoras ativas.</p>
   <%end%>

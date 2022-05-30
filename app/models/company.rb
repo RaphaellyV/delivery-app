@@ -9,4 +9,6 @@ class Company < ApplicationRecord
   def full_description
     "#{brand_name} | #{corporate_name} | #{state}"
   end
+
+  has_many :users
 end

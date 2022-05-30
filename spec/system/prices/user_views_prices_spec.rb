@@ -14,7 +14,10 @@ describe 'Usuário vê preços' do
 
   it 'com sucesso' do
     #Arrange
-    user = User.create!(name: 'João', email: 'joao@transportadora.com', password: 'password')
+    Company.create!(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
+                    registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
+                    billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
+    user = User.create!(name: 'João', email: 'joao@olistpax.com.br', password: 'password')
     Price.create!(min_vol: 0.5, max_vol: 10, min_weight: 0.7, max_weight: 15, price_per_km: 5)
     Price.create!(min_vol: 10.01, max_vol: 14, min_weight: 15.1, max_weight:30, price_per_km: 12.50)
 
@@ -37,7 +40,10 @@ describe 'Usuário vê preços' do
 
   it 'e não existem preços cadastrados' do
     #Arrange
-    user = User.create!(name: 'João', email: 'joao@transportadora.com', password: 'password')
+    Company.create!(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
+                    registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
+                    billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
+    user = User.create!(name: 'João', email: 'joao@olistpax.com.br', password: 'password')
 
     #Act
     login_as(user)

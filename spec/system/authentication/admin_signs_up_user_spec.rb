@@ -28,7 +28,9 @@ describe 'Usuário cria uma conta' do
 
   it 'como administrador' do
     #Arrange
-
+    Company.create!(brand_name: 'Sistema de Fretes', corporate_name: 'Sistema de Fretes LTDA', domain:'@sistemadefrete.com.br', 
+                    registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
+                    billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
     #Act
     visit root_path
     click_on 'Entrar como Empresa'

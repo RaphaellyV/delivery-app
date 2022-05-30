@@ -4,7 +4,7 @@ RSpec.describe User, type: :model do
   describe '#valid?' do
     it 'o nome é obrigatório' do
       #Arrange
-      user = User.new(name: '')
+      user = User.new(name: '', email: 'joao@sistemadefrete.com')
 
       #Act
       user.valid?

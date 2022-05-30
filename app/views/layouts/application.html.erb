@@ -22,6 +22,7 @@
               <%= link_to 'Transportadoras', companies_path %> |
               <%= link_to 'Criar Ordem de Serviço', new_order_path %> |
             <% else %>
+              <p><%= current_user.company.full_description %></p>
               <%= link_to 'Preços', prices_path %> |
               <%= link_to 'Prazos', deadlines_path %> |
               <%= link_to 'Veículos', vehicles_path %> |

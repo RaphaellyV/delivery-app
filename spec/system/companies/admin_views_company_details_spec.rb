@@ -3,7 +3,11 @@ require 'rails_helper'
 describe 'Admin vê detalhes da transportadora' do
   it 'a partir da tela inicial' do
     #Arrange
-    user = User.create!(name: 'João', email: 'joao@email.com', password: 'password', admin: true)
+    Company.create!(brand_name: 'Sistema de Frete', corporate_name: 'Sistema de Frete LTDA', domain:'@sistemadefrete.com.br', 
+                    registration_number: '30.320.042/0001-71', postal_code: '06460-000', 
+                    billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
+    user = User.create!(name: 'João', email: 'joao@sistemadefrete.com.br', password: 'password')
+    
     Company.create!(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
                     registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
                     billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
@@ -31,7 +35,11 @@ describe 'Admin vê detalhes da transportadora' do
 
   it 'e retorna à lista de transportadoras' do
     #Arrange
-    user = User.create!(name: 'João', email: 'joao@email.com', password: 'password', admin: true)
+    Company.create!(brand_name: 'Sistema de Frete', corporate_name: 'Sistema de Frete LTDA', domain:'@sistemadefrete.com.br', 
+                    registration_number: '30.320.042/0001-71', postal_code: '06460-000', 
+                    billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
+    user = User.create!(name: 'João', email: 'joao@sistemadefrete.com.br', password: 'password')
+
     Company.create!(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
                     registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
                     billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')

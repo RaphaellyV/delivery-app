@@ -3,7 +3,10 @@ require 'rails_helper'
 describe 'Admin cadastra uma transportadora' do
   it 'a partir da lista de transportadoras' do
     #Arrange
-    user = User.create!(name: 'João', email: 'joao@email.com', password: 'password', admin: true)
+    Company.create!(brand_name: 'Sistema de Frete', corporate_name: 'Sistema de Frete LTDA', domain:'@sistemadefrete.com.br', 
+                    registration_number: '30.320.042/0001-71', postal_code: '06460-000', 
+                    billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
+    user = User.create!(name: 'João', email: 'joao@sistemadefrete.com.br', password: 'password')
 
     #Act
     login_as(user)
@@ -23,7 +26,10 @@ describe 'Admin cadastra uma transportadora' do
 
   it 'com sucesso' do
     #Arrange
-    user = User.create!(name: 'João', email: 'joao@email.com', password: 'password', admin: true)
+    Company.create!(brand_name: 'Sistema de Frete', corporate_name: 'Sistema de Frete LTDA', domain:'@sistemadefrete.com.br', 
+                    registration_number: '30.320.042/0001-71', postal_code: '06460-000', 
+                    billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
+    user = User.create!(name: 'João', email: 'joao@sistemadefrete.com.br', password: 'password')
 
     #Act
     login_as(user)
@@ -55,7 +61,10 @@ describe 'Admin cadastra uma transportadora' do
 
   it 'com dados incompletos' do
     #Arrange
-    user = User.create!(name: 'João', email: 'joao@email.com', password: 'password', admin: true)
+    Company.create!(brand_name: 'Sistema de Frete', corporate_name: 'Sistema de Frete LTDA', domain:'@sistemadefrete.com.br', 
+                    registration_number: '30.320.042/0001-71', postal_code: '06460-000', 
+                    billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
+    user = User.create!(name: 'João', email: 'joao@sistemadefrete.com.br', password: 'password')
 
     #Act
     login_as(user)

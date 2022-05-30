@@ -14,7 +14,10 @@ describe 'Usuário vê prazos de sua transportadora' do
 
   it 'com sucesso' do
     #Arrange
-    user = User.create!(name: 'João', email: 'joao@transportadora.com', password: 'password')
+    Company.create!(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
+                    registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
+                    billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
+    user = User.create!(name: 'João', email: 'joao@olistpax.com.br', password: 'password')
     Deadline.create!(min_distance: 3, max_distance: 30, max_days: 2)
     Deadline.create!(min_distance: 31, max_distance: 70, max_days: 5)
 
@@ -36,7 +39,10 @@ describe 'Usuário vê prazos de sua transportadora' do
 
   it 'e não existem prazos cadastrados' do
     #Arrange
-    user = User.create!(name: 'João', email: 'joao@transportadora.com', password: 'password')
+    Company.create!(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
+                    registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
+                    billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
+    user = User.create!(name: 'João', email: 'joao@olistpax.com.br', password: 'password')
     
     #Act
     login_as(user)
