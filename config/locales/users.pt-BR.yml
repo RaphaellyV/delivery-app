@@ -8,3 +8,4 @@ pt-BR:
         name: 'Nome'
         password: 'Senha'
         admin: 'Administrador'
+        company_id: 'Transportadora'

@@ -211,7 +211,18 @@ RSpec.describe Order, type: :model do
     end
 
     context 'format' do
-      it 'o CPF deve ter menos que 11 dígitos' do
+      it 'o CPF deve ter 11 dígitos' do
+        #Arrange
+        order = Order.new(recipient_registration_number: '198.163.877-40')
+        
+        #Act
+        order.valid?
+
+        #Assert
+        expect(order.errors.include?(:recipient_registration_number)).to be false
+      end
+
+      it 'o CPF não deve ter menos que 11 dígitos' do
         #Arrange
         order = Order.new(recipient_registration_number: '198.163.877-4')
         
@@ -233,7 +244,18 @@ RSpec.describe Order, type: :model do
         expect(order.errors.include?(:recipient_registration_number)).to be true
       end
 
-      it 'o telefone não deve ter menos que 10' do
+      it 'o telefone pode ter 10 dígitos' do
+        #Arrange
+        order = Order.new(recipient_telephone: '2227222420')
+        
+        #Act
+        order.valid?
+
+        #Assert
+        expect(order.errors.include?(:recipient_telephone)).to be false
+      end
+
+      it 'o telefone não deve ter menos que 10 dígitos' do
         #Arrange
         order = Order.new(recipient_telephone: '229852220')
         
@@ -242,6 +264,17 @@ RSpec.describe Order, type: :model do
 
         #Assert
         expect(order.errors.include?(:recipient_telephone)).to be true
+      end
+
+      it 'o telefone pode ter 11 dígitos' do
+        #Arrange
+        order = Order.new(recipient_telephone: '22985222000')
+        
+        #Act
+        order.valid?
+
+        #Assert
+        expect(order.errors.include?(:recipient_telephone)).to be false
       end
 
       it 'o telefone não deve ter mais que 11 dígitos' do
@@ -266,6 +299,17 @@ RSpec.describe Order, type: :model do
         expect(order.errors.include?(:recipient_email)).to be true
       end
 
+      it 'o CEP de destino ter 8 dígitos' do
+        #Arrange
+        order = Order.new(recipient_postal_code: '27150-520')
+        
+        #Act
+        order.valid?
+
+        #Assert
+        expect(order.errors.include?(:recipient_postal_code)).to be false
+      end
+
       it 'o CEP de destino não deve ter menos que 8 dígitos' do
         #Arrange
         order = Order.new(recipient_postal_code: '2715-520')
@@ -286,6 +330,17 @@ RSpec.describe Order, type: :model do
 
         #Assert
         expect(order.errors.include?(:recipient_postal_code)).to be true
+      end
+
+      it 'o CEP de coleta deve ter 8 dígitos' do
+        #Arrange
+        order = Order.new(postal_code: '53200-000')
+        
+        #Act
+        order.valid?
+
+        #Assert
+        expect(order.errors.include?(:postal_code)).to be false
       end
 
       it 'o CEP de coleta não deve ter menos que 8 dígitos' do

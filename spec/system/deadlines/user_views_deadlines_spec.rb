@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Usuário vê prazos' do
 
-  it 'com sucesso' do
+  it 'de sua transportadora com sucesso' do
     #Arrange
     user = User.create!(name: 'João', email: 'joao@transportadora.com', password: 'password')
     Deadline.create!(min_distance: 3, max_distance: 30, max_days: 2)

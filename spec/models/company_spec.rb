@@ -125,6 +125,17 @@ RSpec.describe Company, type: :model do
     end
 
     context 'format' do
+      it 'o CEP deve ter 8 dígitos' do
+        #Arrange
+        company = Company.new(postal_code: '26360-000')
+        
+        #Act
+        company.valid?
+
+        #Assert
+        expect(company.errors.include?(:postal_code)).to be false
+      end
+
       it 'o CEP não deve ter menos que 8 dígitos' do
         #Arrange
         company = Company.new(postal_code: '26360-00')
@@ -145,7 +156,18 @@ RSpec.describe Company, type: :model do
         #Assert
         expect(company.valid?).to eq false
       end
-  
+      
+      it 'o CNPJ deve ter 14 dígitos' do
+        #Arrange
+        company = Company.new(registration_number: '30.320.042/0001-70')
+        
+        #Act
+        company.valid?
+
+        #Assert
+        expect(company.errors.include?(:registration_number)).to be false
+      end
+
       it 'o CNPJ não deve ter menos que 14 dígitos' do
         #Arrange
         company = Company.new(registration_number: '30.320.042/0001-7')

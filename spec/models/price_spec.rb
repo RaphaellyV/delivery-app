@@ -74,8 +74,18 @@ RSpec.describe Price, type: :model do
       end
     end
 
-    context 'less than' do
+    context 'greater than' do
       it 'o volume máximo deve ser maior que o volume mínimo' do
+        #Arrange
+        price = Price.new(min_vol: 10, max_vol: 13, min_weight: 0.7, max_weight: 15, price_per_km: 5)      
+  
+        #Act
+  
+        #Assert
+        expect(price.valid?).to eq true
+      end
+
+      it 'o volume máximo não deve ser menor que o volume mínimo' do
         #Arrange
         price = Price.new(min_vol: 11, max_vol: 10, min_weight: 0.7, max_weight: 15, price_per_km: 5)      
   
@@ -85,9 +95,39 @@ RSpec.describe Price, type: :model do
         expect(price.valid?).to eq false
       end
 
+      it 'o volume máximo não deve ser igual ao volume mínimo' do
+        #Arrange
+        price = Price.new(min_vol: 10, max_vol: 10, min_weight: 0.7, max_weight: 15, price_per_km: 5)      
+  
+        #Act
+  
+        #Assert
+        expect(price.valid?).to eq false
+      end
+
       it 'o peso máximo deve ser maior que o peso mínimo' do
         #Arrange
+        price = Price.new(min_vol: 0.5, max_vol: 10, min_weight: 0.7, max_weight: 16, price_per_km: 5)      
+  
+        #Act
+  
+        #Assert
+        expect(price.valid?).to eq true
+      end
+
+      it 'o peso máximo não deve ser menor que o peso mínimo' do
+        #Arrange
         price = Price.new(min_vol: 0.5, max_vol: 10, min_weight: 16, max_weight: 15, price_per_km: 5)      
+  
+        #Act
+  
+        #Assert
+        expect(price.valid?).to eq false
+      end
+
+      it 'o peso máximo não deve ser igual ao peso mínimo' do
+        #Arrange
+        price = Price.new(min_vol: 0.5, max_vol: 10, min_weight: 16, max_weight: 16, price_per_km: 5)      
   
         #Act
   

@@ -53,8 +53,28 @@ RSpec.describe Deadline, type: :model do
       end
     end
 
-    context 'less than' do
+    context 'greater than' do
       it 'a distância máxima deve ser maior que a distância mínima' do
+        #Arrange
+        deadline = Deadline.new(min_distance: 20, max_distance: 30, max_days: 4)      
+  
+        #Act
+  
+        #Assert
+        expect(deadline.valid?).to eq true
+      end
+
+      it 'a distância máxima não deve ser igual à distância mínima' do
+        #Arrange
+        deadline = Deadline.new(min_distance: 20, max_distance: 20, max_days: 4)      
+  
+        #Act
+  
+        #Assert
+        expect(deadline.valid?).to eq false
+      end
+
+      it 'a distância máxima não deve ser menor que a distância mínima' do
         #Arrange
         deadline = Deadline.new(min_distance: 30, max_distance: 20, max_days: 4)      
   

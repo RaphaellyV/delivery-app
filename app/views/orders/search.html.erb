@@ -1,0 +1,14 @@
+<h1>Resultado da Busca por: <%= @tracking_code %></h1>
+
+<% if @order.present? %>
+  <dl>
+    <dt><strong><%= Order.human_attribute_name(:tracking_code) %>: </strong></dt>
+    <dd><%= @order.tracking_code %></dd>
+    <dt><strong><%= Order.human_attribute_name(:recipient_name) %>: </strong></dt>
+    <dd><%= @order.recipient_name %></dd>
+    <dt><strong><%= Order.human_attribute_name(:product_code) %>: </strong></dt>
+    <dd><%= @order.product_code %></dd>
+  </dl>
+<% else %>
+  <p>Não foi possível encontrar o pedido.</p>
+<% end %>

@@ -1,8 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!
-  before_action do 
-    redirect_to new_user_session_path unless current_user && current_user.admin?
-  end
+  before_action :authenticate_user!, except: [:search]
 
   def new
    @order = Order.new
@@ -27,5 +24,10 @@ class OrdersController < ApplicationController
   
   def show
     @order = Order.find(params[:id])
+  end
+
+  def search
+    @tracking_code = params['query']
+    @order = Order.find_by(tracking_code: @tracking_code)
   end
 end

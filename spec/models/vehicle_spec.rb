@@ -75,6 +75,17 @@ RSpec.describe Vehicle, type: :model do
     end
 
     context 'format' do
+      it 'a placa do carro deve ter 7 dígitos' do
+        #Arrange
+        vehicle = Vehicle.new(license_plate: 'BEE4R32')
+
+        #Act
+        vehicle.valid?
+
+        #Assert
+        expect(vehicle.errors.include?(:license_plate)).to be false
+      end
+
       it 'a placa do carro não deve ter menos que 7 dígitos' do
         #Arrange
         vehicle = Vehicle.new(license_plate: 'BE4R22')

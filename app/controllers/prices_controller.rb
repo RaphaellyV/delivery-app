@@ -1,8 +1,5 @@
 class PricesController < ApplicationController
   before_action :authenticate_user!
-  before_action do 
-    redirect_to new_user_session_path unless current_user
-  end
   before_action :set_price, only: [:edit, :update]
 
   def index
