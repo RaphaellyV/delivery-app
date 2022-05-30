@@ -2,6 +2,16 @@ require 'rails_helper'
 
 describe 'Usuário vê preços' do
 
+  it 'se estiver autenticado' do
+    #Arrange
+
+    #Act
+    visit(prices_path)
+
+    #Assert
+    expect(current_path).to eq new_user_session_path
+  end
+
   it 'com sucesso' do
     #Arrange
     user = User.create!(name: 'João', email: 'joao@transportadora.com', password: 'password')

@@ -1,8 +1,18 @@
 require 'rails_helper'
 
-describe 'Usuário vê prazos' do
+describe 'Usuário vê prazos de sua transportadora' do
 
-  it 'de sua transportadora com sucesso' do
+  it 'se estiver autenticado' do
+    #Arrange
+
+    #Act
+    visit(deadlines_path)
+
+    #Assert
+    expect(current_path).to eq new_user_session_path
+  end
+
+  it 'com sucesso' do
     #Arrange
     user = User.create!(name: 'João', email: 'joao@transportadora.com', password: 'password')
     Deadline.create!(min_distance: 3, max_distance: 30, max_days: 2)
