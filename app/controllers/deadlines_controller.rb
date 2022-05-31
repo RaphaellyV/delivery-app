@@ -1,6 +1,6 @@
 class DeadlinesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_deadline, only: [:edit, :update]
+  before_action :set_deadline_and_check_user, only: [:edit, :update]
 
   def index
     @deadlines = current_user.company.deadlines
@@ -23,11 +23,7 @@ class DeadlinesController < ApplicationController
     end
   end
 
-  def edit
-    if @deadline.company != current_user.company
-      redirect_to root_path
-    end
-  end
+  def edit; end
 
   def update
     deadline_params
@@ -41,8 +37,11 @@ class DeadlinesController < ApplicationController
 
   private
 
-    def set_deadline
+    def set_deadline_and_check_user
         @deadline = Deadline.find(params[:id])
+        if @deadline.company != current_user.company
+          return redirect_to root_path
+        end
     end
 
     def deadline_params

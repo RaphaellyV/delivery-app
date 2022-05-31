@@ -1,6 +1,6 @@
 class PricesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_price, only: [:edit, :update]
+  before_action :set_price_and_check_user, only: [:edit, :update]
 
   def index
     @prices = current_user.company.prices
@@ -23,11 +23,7 @@ class PricesController < ApplicationController
     end
   end
 
-  def edit
-    if @price.company != current_user.company
-      redirect_to root_path
-    end
-  end
+  def edit; end
 
   def update
     price_params
@@ -41,8 +37,11 @@ class PricesController < ApplicationController
   
   private
 
-    def set_price
+    def set_price_and_check_user
         @price = Price.find(params[:id])
+        if @price.company != current_user.company
+          return redirect_to root_path
+        end
     end
 
     def price_params

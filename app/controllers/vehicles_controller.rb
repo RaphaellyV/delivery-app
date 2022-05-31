@@ -1,6 +1,6 @@
 class VehiclesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_vehicle, only: [:edit, :update]
+  before_action :set_vehicle_and_check_user, only: [:edit, :update]
 
   def index
     @vehicles = current_user.company.vehicles
@@ -23,11 +23,7 @@ class VehiclesController < ApplicationController
     end
   end
 
-  def edit
-    if @vehicle.company != current_user.company
-      redirect_to root_path
-    end
-  end
+  def edit; end
 
   def update
     vehicle_params
@@ -41,8 +37,11 @@ class VehiclesController < ApplicationController
 
   private
 
-    def set_vehicle
+    def set_vehicle_and_check_user
         @vehicle = Vehicle.find(params[:id])
+        if @vehicle.company != current_user.company
+          return redirect_to root_path
+        end
     end
 
     def vehicle_params
