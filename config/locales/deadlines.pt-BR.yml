@@ -7,3 +7,5 @@ pt-BR:
         min_distance: 'Distância Mínima'
         max_distance: 'Distância Máxima'
         max_days: 'Prazo'
+        company_id: 'Transportadora'
+        company: 'Transportadora'

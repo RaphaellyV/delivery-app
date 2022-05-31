@@ -41,7 +41,10 @@ RSpec.describe Deadline, type: :model do
       
       it 'o prazo deve ser único' do
         #Arrange
-        first_deadline = Deadline.create!(min_distance: 3, max_distance: 30, max_days: 5)
+        company = Company.create!(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
+                                  registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
+                                  billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
+        first_deadline = Deadline.create!(min_distance: 3, max_distance: 30, max_days: 5, company: company)
 
         second_deadline = Deadline.new(max_days: 5)         
   
@@ -56,7 +59,10 @@ RSpec.describe Deadline, type: :model do
     context 'greater than' do
       it 'a distância máxima deve ser maior que a distância mínima' do
         #Arrange
-        deadline = Deadline.new(min_distance: 20, max_distance: 30, max_days: 4)      
+        company = Company.create!(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
+                                  registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
+                                  billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
+        deadline = Deadline.new(min_distance: 20, max_distance: 30, max_days: 4, company:company)      
   
         #Act
   

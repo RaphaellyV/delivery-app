@@ -11,4 +11,5 @@ class Company < ApplicationRecord
   end
 
   has_many :users
+  has_many :deadlines
 end

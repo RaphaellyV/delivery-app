@@ -3,7 +3,7 @@ class DeadlinesController < ApplicationController
   before_action :set_deadline, only: [:edit, :update]
 
   def index
-    @deadlines = Deadline.all
+    @deadlines = current_user.company.deadlines
   end
 
   def new
@@ -13,6 +13,7 @@ class DeadlinesController < ApplicationController
   def create
     deadline_params
     @deadline = Deadline.new(deadline_params)
+    @deadline.company = current_user.company
 
     if @deadline.save()
       redirect_to deadlines_path, notice:'Prazo cadastrado com sucesso.'
