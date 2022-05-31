@@ -12,4 +12,6 @@ class Company < ApplicationRecord
 
   has_many :users
   has_many :deadlines
+  has_many :prices
+  has_many :vehicles
 end

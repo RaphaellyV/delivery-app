@@ -3,11 +3,11 @@ require 'rails_helper'
 describe 'Usuário edita um preço' do
   it 'a partir da lista de preços' do
     #Arrange
-    Company.create!(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
-                    registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
-                    billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
+    company = Company.create!(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
+                              registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
+                              billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
     user = User.create!(name: 'João', email: 'joao@olistpax.com.br', password: 'password')
-    price = Price.create!(min_vol: 0.5, max_vol: 10.0, min_weight: 0.7, max_weight: 15.0, price_per_km: 5.00)
+    price = Price.create!(min_vol: 0.5, max_vol: 10.0, min_weight: 0.7, max_weight: 15.0, price_per_km: 5.00, company: company)
 
     #Act
     login_as(user)
@@ -25,11 +25,11 @@ describe 'Usuário edita um preço' do
 
   it 'com sucesso' do
     #Arrange
-    Company.create!(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
-                    registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
-                    billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
+    company = Company.create!(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
+                              registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
+                              billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
     user = User.create!(name: 'João', email: 'joao@olistpax.com.br', password: 'password')
-    price = Price.create!(min_vol: 0.5, max_vol: 10.0, min_weight: 0.7, max_weight: 15.0, price_per_km: 5.0)
+    price = Price.create!(min_vol: 0.5, max_vol: 10.0, min_weight: 0.7, max_weight: 15.0, price_per_km: 5.0, company: company)
 
     #Act
     login_as(user)
@@ -50,11 +50,11 @@ describe 'Usuário edita um preço' do
 
   it 'e mantém os campos obrigatórios' do
     #Arrange
-    Company.create!(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
-                    registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
-                    billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
+    company = Company.create!(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
+                              registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
+                              billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
     user = User.create!(name: 'João', email: 'joao@olistpax.com.br', password: 'password')
-    price = Price.create!(min_vol: 0.5, max_vol: 10.0, min_weight: 0.7, max_weight: 15.0, price_per_km: 5.0)
+    price = Price.create!(min_vol: 0.5, max_vol: 10.0, min_weight: 0.7, max_weight: 15.0, price_per_km: 5.0, company: company)
 
     #Act
     login_as(user)

@@ -3,7 +3,7 @@ class PricesController < ApplicationController
   before_action :set_price, only: [:edit, :update]
 
   def index
-    @prices = Price.all
+    @prices = current_user.company.prices
   end
 
   def new
@@ -13,6 +13,7 @@ class PricesController < ApplicationController
   def create
     price_params
     @price = Price.new(price_params)
+    @price.company = current_user.company
 
     if @price.save()
       redirect_to prices_path, notice:'Preço cadastrado com sucesso.'

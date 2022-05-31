@@ -15,8 +15,8 @@ describe 'Usuário vê prazos de sua transportadora' do
   it 'e não vê outros prazos' do
     #Arrange
     company = Company.create!(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
-                    registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
-                    billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
+                              registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
+                              billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
     user = User.create!(name: 'João', email: 'joao@olistpax.com.br', password: 'password')
 
     another_company = Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 

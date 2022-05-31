@@ -62,22 +62,34 @@ RSpec.describe Price, type: :model do
     context 'uniqueness' do
       it 'o preço deve ser único' do
         #Arrange
-        first_price = Price.create!(min_vol: 0.5, max_vol: 10, min_weight: 0.7, max_weight: 15, price_per_km: 5)
+        company = Company.create!(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
+                                registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
+                                billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
+        another_company = Company.create!(brand_name: 'ASAP Log', corporate_name: 'Asap Log Ltda', domain:'@asaplog.com.br', 
+                                          registration_number: '19.629.612/0001-76', postal_code: '80020-090', 
+                                          billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
 
-        second_price = Price.new(price_per_km: 5)         
+        first_price = Price.create!(min_vol: 0.5, max_vol: 10, min_weight: 0.7, max_weight: 15, price_per_km: 5, company: company)
+        second_price = Price.new(price_per_km: 5, company: company) 
+        third_price = Price.new(price_per_km: 5, company: another_company)
   
         #Act
         second_price.valid?
+        third_price.valid?
 
         #Assert
         expect(second_price.errors.include?(:price_per_km)).to be true
+        expect(third_price.errors.include?(:price_per_km)).to be false
       end
     end
 
     context 'greater than' do
       it 'o volume máximo deve ser maior que o volume mínimo' do
         #Arrange
-        price = Price.new(min_vol: 10, max_vol: 13, min_weight: 0.7, max_weight: 15, price_per_km: 5)      
+        company = Company.create!(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
+                                  registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
+                                  billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
+        price = Price.new(min_vol: 10, max_vol: 13, min_weight: 0.7, max_weight: 15, price_per_km: 5, company: company)      
   
         #Act
   
@@ -97,6 +109,9 @@ RSpec.describe Price, type: :model do
 
       it 'o volume máximo não deve ser igual ao volume mínimo' do
         #Arrange
+        company = Company.create!(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
+                                  registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
+                                  billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
         price = Price.new(min_vol: 10, max_vol: 10, min_weight: 0.7, max_weight: 15, price_per_km: 5)      
   
         #Act
@@ -107,7 +122,10 @@ RSpec.describe Price, type: :model do
 
       it 'o peso máximo deve ser maior que o peso mínimo' do
         #Arrange
-        price = Price.new(min_vol: 0.5, max_vol: 10, min_weight: 0.7, max_weight: 16, price_per_km: 5)      
+        company = Company.create!(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
+                                  registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
+                                  billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
+        price = Price.new(min_vol: 0.5, max_vol: 10, min_weight: 0.7, max_weight: 16, price_per_km: 5, company: company)      
   
         #Act
   

@@ -62,7 +62,10 @@ RSpec.describe Vehicle, type: :model do
     context 'uniqueness' do
       it 'a placa do carro deve ser única' do
         #Arrange
-        first_vehicle = Vehicle.create!(license_plate: 'BEE4R22', v_brand: 'Mercedes-Benz', v_model: 'Accelo 815', v_year:2019, max_load: 8_000)
+        company = Company.create!(brand_name: 'Olist Pax', corporate_name: 'PAX TECNOLOGIA EIRELI (“PAX”)', domain:'@olistpax.com.br', 
+                                  registration_number: '30.320.042/0001-70', postal_code: '06460-000', 
+                                  billing_address: 'Avenida Tamboré, 1180', city: 'Barueri', state: 'SP')
+        first_vehicle = Vehicle.create!(license_plate: 'BEE4R22', v_brand: 'Mercedes-Benz', v_model: 'Accelo 815', v_year:2019, max_load: 8_000, company: company)
 
         second_vehicle = Vehicle.new(license_plate: 'BEE4R22')         
   

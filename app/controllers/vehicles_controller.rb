@@ -6,7 +6,7 @@ class VehiclesController < ApplicationController
   before_action :set_vehicle, only: [:edit, :update]
 
   def index
-    @vehicles = Vehicle.all
+    @vehicles = current_user.company.vehicles
   end
 
   def new
@@ -16,6 +16,7 @@ class VehiclesController < ApplicationController
   def create
     vehicle_params
     @vehicle = Vehicle.new(vehicle_params)
+    @vehicle.company = current_user.company
 
     if @vehicle.save()
       redirect_to vehicles_path, notice:'Veículo cadastrado com sucesso.'
