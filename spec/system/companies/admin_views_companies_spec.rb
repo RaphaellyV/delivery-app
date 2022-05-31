@@ -10,11 +10,11 @@ describe 'Admin vê transportadoras' do
     user = User.create!(name: 'João', email: 'joao@olistpax.com.br', password: 'password')
 
     #Act
+    login_as(user)
     visit companies_path
 
     #Assert
-    login_as(user)
-    expect(current_path).to eq new_user_session_path
+    expect(current_path).to eq root_path
   end
 
   it 'com sucesso' do

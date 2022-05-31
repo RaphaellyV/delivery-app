@@ -21,6 +21,7 @@
             <% if current_user.admin? %>
               <%= link_to 'Transportadoras', companies_path %> |
               <%= link_to 'Criar Ordem de Serviço', new_order_path %> |
+              <%= link_to 'Criar Orçamento', new_quotation_path %> |
             <% else %>
               <p><%= current_user.company.full_description %></p>
               <%= link_to 'Preços', prices_path %> |

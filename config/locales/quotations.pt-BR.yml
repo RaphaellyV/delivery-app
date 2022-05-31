@@ -1,0 +1,12 @@
+pt-BR:
+  activerecord:
+    models:
+      quotation: 'Orçamento'
+    attributes:
+      quotation:
+        height: 'Altura'
+        width: 'Largura'
+        length: 'Comprimento'
+        weight: 'Peso'
+        distance: 'Distância'
+        volume: 'Volume'

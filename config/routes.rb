@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resources :vehicles, only: [:index, :new, :create, :edit, :update]
   resources :prices, only: [:index, :new, :create, :edit, :update]
   resources :deadlines, only: [:index, :new, :create, :edit, :update]
-  
+  resources :quotations, only: [:index, :new, :create, :show]
+
   resources :orders, only: [:new, :create, :show] do
     get 'search', on: :collection
   end
