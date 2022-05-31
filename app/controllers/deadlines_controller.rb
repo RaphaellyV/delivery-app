@@ -23,7 +23,11 @@ class DeadlinesController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    if @deadline.company != current_user.company
+      redirect_to root_path
+    end
+  end
 
   def update
     deadline_params

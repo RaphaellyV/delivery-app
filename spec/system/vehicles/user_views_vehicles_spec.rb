@@ -24,9 +24,12 @@ describe 'Usuário vê veículos de sua transportadora' do
                                       billing_address: 'Avenida Marechal Floriano Peixoto, 96', city: 'Curitiba', state: 'PR')
     another_user = User.create!(name: 'Maria', email: 'maria@asaplog.com.br', password: 'password')
     
-    first_vehicle = Vehicle.create!(license_plate: 'BEE4R22', v_brand: 'Mercedes-Benz', v_model: 'Accelo 815', v_year:2019, max_load: 8_000, company: company)
-    second_vehicle = Vehicle.create!(license_plate: 'HMG0248', v_brand: 'Ford', v_model: 'Cargo 816', v_year:2018, max_load: 7_000, company: another_company)
-    third_vehicle = Vehicle.create!(license_plate: 'HMG0365', v_brand: 'Ford', v_model: 'Cargo 816', v_year:2020, max_load: 7_000, company: company)
+    first_vehicle = Vehicle.create!(license_plate: 'BEE4R22', v_brand: 'Mercedes-Benz', v_model: 'Accelo 815', v_year:2019, max_load: 8_000, 
+                                    company: company)
+    second_vehicle = Vehicle.create!(license_plate: 'HMG0248', v_brand: 'Ford', v_model: 'Cargo 816', v_year:2018, max_load: 7_000, 
+                                     company: another_company)
+    third_vehicle = Vehicle.create!(license_plate: 'HMG0365', v_brand: 'Ford', v_model: 'Cargo 816', v_year:2020, max_load: 7_000, 
+                                    company: company)
 
     #Act
     login_as(user)

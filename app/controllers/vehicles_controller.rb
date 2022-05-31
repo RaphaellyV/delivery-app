@@ -23,7 +23,11 @@ class VehiclesController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    if @vehicle.company != current_user.company
+      redirect_to root_path
+    end
+  end
 
   def update
     vehicle_params

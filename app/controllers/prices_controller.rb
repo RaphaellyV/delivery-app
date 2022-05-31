@@ -23,7 +23,11 @@ class PricesController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    if @price.company != current_user.company
+      redirect_to root_path
+    end
+  end
 
   def update
     price_params
