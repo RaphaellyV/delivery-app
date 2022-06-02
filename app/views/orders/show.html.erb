@@ -37,3 +37,10 @@
     <dd><%= @order.postal_code %></dd>
   </dl>
 </section>
+
+<% if @order.pending? %>
+  <%= button_to 'Aceitar Ordem de Serviço', accepted_order_path(@order.id) %>
+  <%= button_to 'Recusar Ordem de Serviço', refused_order_path(@order.id) %>
+<% elsif @order.accepted? %>
+  <%= button_to 'Pedido Entregue', delivered_order_path(@order.id) %>
+<% end %>

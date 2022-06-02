@@ -1,7 +1,7 @@
 pt-BR:
   pending: 'Pendente'
-  processing: 'Em processamento'
-  in_transit: 'Em trânsito'
+  accepted: 'Aceita'
+  refused: 'Recusada'
   delivered: 'Entregue'
   activerecord:
     models:

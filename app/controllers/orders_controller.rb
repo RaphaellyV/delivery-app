@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, except: [:search]
+  before_action :set_order_and_check_user, only: [:accepted, :refused, :delivered]
 
   def new
    @order = Order.new
@@ -29,5 +30,29 @@ class OrdersController < ApplicationController
   def search
     @tracking_code = params['query']
     @order = Order.find_by(tracking_code: @tracking_code)
+  end
+
+  def accepted
+    @order.accepted!
+    redirect_to @order
+  end
+
+  def refused
+    @order.refused!
+    redirect_to @order
+  end
+
+  def delivered
+    @order.delivered!
+    redirect_to @order
+  end
+
+  private
+
+  def set_order_and_check_user
+    @order = Order.find(params[:id])
+    if @order.company != current_user.company
+      return redirect_to root_path
+    end
   end
 end

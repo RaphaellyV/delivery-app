@@ -9,5 +9,8 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:new, :create, :show] do
     get 'search', on: :collection
+    post 'accepted', on: :member
+    post 'refused', on: :member
+    post 'delivered', on: :member
   end
 end
