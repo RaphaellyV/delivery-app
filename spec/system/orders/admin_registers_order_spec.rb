@@ -71,6 +71,7 @@ describe 'Administrador cadastra uma ordem de serviço' do
   
     expect(page).to have_content 'Transportadora Responsável: ASAP Log | Asap Log Ltda | PR'
     expect(page).to have_content 'Código de Rastreamento: ABCDEFG12345678'
+    expect(page).to have_content 'Status: Pendente'
     expect(page).not_to have_content 'Olist Pax'
   end
 

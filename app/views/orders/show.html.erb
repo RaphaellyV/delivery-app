@@ -2,6 +2,7 @@
 
 <h3><%= Order.human_attribute_name(:company_id) %>: <%= @order.company.full_description %></h3>
 <h3><%= Order.human_attribute_name(:tracking_code) %>: <%= @order.tracking_code %></h3>
+<h3><%= Order.human_attribute_name(:status) %>: <%= I18n.t(@order.status) %></h3>
   
 <section>
   <h4>DADOS DO DESTINATÁRIO</h4>

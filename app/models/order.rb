@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :company
-
+  enum status: {pending: 0, processing: 5, in_transit: 10, delivered: 15}
+  
   before_validation :generate_tracking_code, on: :create
 
   validates :recipient_name, :recipient_registration_number, :recipient_telephone, 

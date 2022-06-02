@@ -1,4 +1,9 @@
 class Company < ApplicationRecord
+  has_many :users
+  has_many :deadlines
+  has_many :prices
+  has_many :vehicles
+
   validates :brand_name, :corporate_name, :domain, :registration_number, :postal_code, 
             :billing_address, :city, :state, :domain, presence: true
   validates :registration_number, :domain, uniqueness: true
@@ -10,8 +15,4 @@ class Company < ApplicationRecord
     "#{brand_name} | #{corporate_name} | #{state}"
   end
 
-  has_many :users
-  has_many :deadlines
-  has_many :prices
-  has_many :vehicles
 end

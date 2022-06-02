@@ -4,11 +4,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
+  belongs_to :company  
+
   validates :name, presence: true
 
   before_validation :assign_admin
-
-  belongs_to :company
 
   def assign_admin
     self.company = Company.find_by(domain: "@"+self.email.split("@")[1])

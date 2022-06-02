@@ -1,4 +1,8 @@
 pt-BR:
+  pending: 'Pendente'
+  processing: 'Em processamento'
+  in_transit: 'Em trânsito'
+  delivered: 'Entregue'
   activerecord:
     models:
       order: 'Ordem de Serviço'
