@@ -4,27 +4,21 @@
 
 <p align = "justify"> Desenvolver uma aplicação web responsável por gerenciar meios de transporte disponíveis para e-commerces. </p>
 
-## Sobre CSS
-https://stackoverflow.com/questions/1367409/how-to-make-button-look-like-a-link
+- [ ] Gestão de transportadoras
 
-## Sobre devise
-https://stackoverflow.com/questions/33131223/multiple-users-in-devise
+- [X] Usuários administradores e de transportadoras
 
-## Gestão de Transportadoras
+- [X] Cadastro de veículos
 
-## Usuários administradores e de transportadoras
+- [X] Configuração de preços
 
-## Cadastro de Veículos
+- [X] Configuração de prazos
 
-## Configuração de preços
+- [ ] Consulta de preços
 
-## Configuração de prazos
+- [ ] Criação de Ordem de Serviço
 
-## Consulta de preços
-
-## Criar Ordem de Serviço
-
-## Consulta de Entrega
+- [ ] Consulta de Entrega
 
 
 * Projeto sendo desenvolvido em: https://github.com/users/RaphaellyV/projects/1.
