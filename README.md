@@ -36,16 +36,19 @@
 ## Como rodar a aplicação
 
 <p align = "justify"> No terminal, clone o projeto: </p>
+
 ```
 $ git clone https://github.com/RaphaellyV/delivery-app
 ```
 
 <p align = "justify"> Entre na pasta do projeto: </p>
+
 ```
 $ cd delivery-app
 ```
 
 <p align = "justify"> Instale as dependencias: </p>
+
 ```
 $ bin/setup
 ```
