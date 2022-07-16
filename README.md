@@ -2,7 +2,9 @@
 
 ## Descrição do Projeto
 
-<p align = "justify"> Desenvolver uma aplicação web responsável por gerenciar meios de transporte disponíveis para e-commerces. </p>
+<p align = "justify"> Aplicação web responsável por gerenciar meios de transporte disponíveis para e-commerces. </p>
+
+## O que a plataforma é capaz de fazer
 
 - [ ] Gestão de transportadoras
 
@@ -20,6 +22,7 @@
 
 - [ ] Consulta de Entrega
 
+> Status do Projeto: Em desenvolvimento :warning:
 
 * Projeto sendo desenvolvido em: https://github.com/users/RaphaellyV/projects/1.
 
