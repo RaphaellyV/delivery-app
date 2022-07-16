@@ -1,5 +1,9 @@
 # Sistema de Entregas
----------------------
+
+## Descrição do Projeto
+
+<p align = "justify"> Desenvolver uma aplicação web responsável por gerenciar meios de transporte disponíveis para e-commerces. </p>
+
 ## Sobre CSS
 https://stackoverflow.com/questions/1367409/how-to-make-button-look-like-a-link
 
