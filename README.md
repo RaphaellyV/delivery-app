@@ -22,7 +22,8 @@
 
 - [ ] Consulta de Entrega
 
-> Status do Projeto: Em desenvolvimento :warning:
+## Status do Projeto: 
+<p align = "justify"> Em desenvolvimento :warning: </p>
 
 * Projeto sendo desenvolvido em: https://github.com/users/RaphaellyV/projects/1.
 
