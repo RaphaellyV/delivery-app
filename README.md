@@ -1,10 +1,20 @@
 # Sistema de Entregas
 
-## Descrição do Projeto
+## Tabela de Conteúdos
+  * [Status do projeto](#status-do-projeto)
+  * [Descrição do projeto](#descrição-do-projeto)
+  * [Funcionalidades](#funcionalidades)
+  * [Como rodas a aplicação](#como-rodar-a-aplicação)
+  * [Como rodar os testes](#como-rodar-os-testes)
+
+## Status do projeto
+<p align = "justify"> Em desenvolvimento :warning: </p>
+
+## Descrição do projeto
 
 <p align = "justify"> Aplicação web responsável por gerenciar meios de transporte disponíveis para e-commerces. </p>
 
-## O que a plataforma é capaz de fazer
+## Funcionalidades
 
 - [ ] Gestão de transportadoras
 
@@ -22,8 +32,28 @@
 
 - [ ] Consulta de Entrega
 
-## Status do Projeto: 
-<p align = "justify"> Em desenvolvimento :warning: </p>
+## Como rodar a aplicação
+
+<p align = "justify"> No terminal, clone o projeto: </p>
+...
+$ git clone https://github.com/RaphaellyV/delivery-app
+...
+
+<p align = "justify"> Entre na pasta do projeto: </p>
+...
+$ cd delivery-app
+...
+
+<p align = "justify"> Instale as dependencias: </p>
+...
+$ bin/setup
+...
+
+## Como rodar os testes
+
+...
+$ rspec
+...
 
 * Projeto sendo desenvolvido em: https://github.com/users/RaphaellyV/projects/1.
 
