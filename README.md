@@ -4,8 +4,9 @@
   * [Status do projeto](#status-do-projeto)
   * [Descrição do projeto](#descrição-do-projeto)
   * [Funcionalidades](#funcionalidades)
-  * [Como rodas a aplicação](#como-rodar-a-aplicação)
+  * [Como rodar a aplicação](#como-rodar-a-aplicação)
   * [Como rodar os testes](#como-rodar-os-testes)
+  * [Informações adicionais](#informações-adicionais)
 
 ## Status do projeto
 <p align = "justify"> Em desenvolvimento :warning: </p>
@@ -35,25 +36,27 @@
 ## Como rodar a aplicação
 
 <p align = "justify"> No terminal, clone o projeto: </p>
-...
+```
 $ git clone https://github.com/RaphaellyV/delivery-app
-...
+```
 
 <p align = "justify"> Entre na pasta do projeto: </p>
-...
+```
 $ cd delivery-app
-...
+```
 
 <p align = "justify"> Instale as dependencias: </p>
-...
+```
 $ bin/setup
-...
+```
 
 ## Como rodar os testes
 
-...
+```
 $ rspec
-...
+```
+
+## Informações adicionais
 
 * Projeto sendo desenvolvido em: https://github.com/users/RaphaellyV/projects/1.
 
