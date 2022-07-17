@@ -1,0 +1,36 @@
+<h2>Criar <%= Quotation.model_name.human %></h2>
+
+<%if (@quotation.errors.any?)%>
+    <p>Verifique os erros abaixo:</p>
+    <ul>
+        <%@quotation.errors.full_messages.each do |msg|%>
+            <li><%=msg%>.</li>
+        <%end%>
+    </ul>
+<%end%>
+
+<%= form_with(model: @quotation) do |quotation| %>
+  <div>
+    <%= quotation.label :height %> 
+    <%= quotation.number_field :height, step: 0.1 %> cm
+  </div>
+  <div>
+    <%= quotation.label :width %> 
+    <%= quotation.number_field :width, step: 0.1 %> cm
+  </div>
+  <div>
+    <%= quotation.label :length %>
+    <%= quotation.number_field :length, step: 0.1 %> cm
+  </div>
+  <div>
+    <%= quotation.label :weight %>
+    <%= quotation.number_field :weight, step: 0.1 %> g
+  <div>
+  <div>
+    <%= quotation.label :distance %>
+    <%= quotation.number_field :distance %> km
+  <div>
+  <div>
+    <%= quotation.submit 'Enviar' %>
+  </div>
+<%end%>

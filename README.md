@@ -27,11 +27,11 @@
 
 - [X] Configuração de prazos
 
-- [ ] Consulta de preços
+- [X] Consulta de preços
 
-- [ ] Criação de Ordem de Serviço
+- [ ] Criação de ordem de serviço
 
-- [ ] Consulta de Entrega
+- [ ] Consulta de entrega
 
 ## Como rodar a aplicação
 

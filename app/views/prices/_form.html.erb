@@ -17,7 +17,7 @@
   <div>
   <div>
     <%= price.label :price_per_km %>
-    R$ <%= price.number_field :price_per_km %>
+    R$ <%= price.number_field :price_per_km, step: 0.1 %>
   </div>
   <div>
     <%= price.submit 'Enviar' %>
